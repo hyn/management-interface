@@ -2,6 +2,7 @@
 
 use Illuminate\Support\ServiceProvider;
 
+use Config;
 class ManagementInterfaceServiceProvider extends ServiceProvider {
 
 	/**
@@ -10,6 +11,15 @@ class ManagementInterfaceServiceProvider extends ServiceProvider {
 	 * @var bool
 	 */
 	protected $defer = false;
+
+    public function boot()
+    {
+        $this->mergeConfigFrom(__DIR__.'/../../config/management-interface.php', 'management-interface');
+
+        $this->loadViewsFrom(__DIR__.'/../../views', Config::get('management-interface.views-namespace'));
+
+        \View::share('_hyn_mi_view_namespace', Config::get('management-interface.views-namespace'));
+    }
 
 	/**
 	 * Register the service provider.
