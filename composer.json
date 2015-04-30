@@ -2,6 +2,7 @@
     "name": "hyn-me/management-interface",
     "description": "The management tool to manage other HynMe packages, like multi tenancy websites and the webserver",
 	"keywords": ["laravel", "hyn-me", "management interface"],
+    "license": "CC-BY-4.0",
     "authors": [
         {
             "name": "Daniël `Luceos` Klabbers",
