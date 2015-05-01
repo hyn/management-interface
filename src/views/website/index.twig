@@ -9,8 +9,9 @@
                         <table class="table table-striped no-margin">
                             <thead>
                             <tr>
-                                <th>{{ trans_choice('management-interface::website.website',1) }}</th>
+                                <th>{% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.icons.website" %} {{ trans_choice('management-interface::website.website',1) }}</th>
                                 <th>{{ trans_choice('management-interface::hostname.hostname',2) }}</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -20,10 +21,13 @@
                                         {{ website.id }}
                                     </td>
                                     <td>
-                                        {{ website.hostnames.lists('hostname')|slice(0,5)|join(", ") }}
-                                        {% if website.hostnames|length > 5 %}
-                                            <span class="badge">{{ trans('management-interface::generic.n-more', {'n': website.hostnames.count - 5}) }}</span>
+                                        {{ website.present().hostnamesSummary }}
+                                        {% if website.present().additionalHostnames > 0 %}
+                                            <span class="badge">{{ trans('management-interface::generic.n-more', {'n': website.present().additionalHostnames}) }}</span>
                                         {% endif %}
+                                    </td>
+                                    <td class="text-right">
+                                        {% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.buttons.view" with {'size': 'xs'} %}
                                     </td>
                                 </tr>
                             {% endfor %}
