@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
 
-        <title>{% if section_header|default(section_title) %}{{ section_header }} &middot; {% endif %}Management interface</title>
+        <title>{% if title|default(section_title) %}{{ title|default(section_title) }} &middot; {% endif %}Management interface</title>
 
         <link type="text/css" rel="stylesheet" href="//media.hyn.me/css/theme-{{ _tenant['mi-config']['theme'] }}/bootstrap.css" />
         <link type="text/css" rel="stylesheet" href="//media.hyn.me/css/theme-{{ _tenant['mi-config']['theme'] }}/materialadmin.css" />
