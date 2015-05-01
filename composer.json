@@ -13,11 +13,11 @@
         "php": ">=5.5.0",
         "illuminate/support": "5.0.*",
         "laracasts/presenter": "~0.2.0",
-        "hyn-me/framework": "*"
+        "hyn-me/framework": "dev-master"
     },
     "suggest": {
-      "hyn-me/multi-tenant": "*",
-      "hyn-me/webserver": "*"
+      "hyn-me/multi-tenant": "dev-master",
+      "hyn-me/webserver": "dev-master"
     },
     "autoload": {
         "psr-0": {
