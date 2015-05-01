@@ -1,141 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
 
-    <link href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
-</head>
-<body>
+        <title>{% if section_header|default(section_title) %}{{ section_header }} &middot; {% endif %}Management interface</title>
 
-<header>
-    <ul id="nav-mobile" class="side-nav fixed">
-        <li>
-            <a href="#">Webserver</a>
-        </li>
-        <li>
-            <a href="#">Website</a>
-        </li>
-        <li>
-            <a href="#">Hostname</a>
-        </li>
-        <li class="logo">
-            <a href="#" id="logo-container" class="brand-logo">Hyn</a>
-        </li>
-    </ul>
-</header>
+        <link type="text/css" rel="stylesheet" href="//media.hyn.me/css/theme-{{ _tenant['mi-config']['theme'] }}/bootstrap.css" />
+        <link type="text/css" rel="stylesheet" href="//media.hyn.me/css/theme-{{ _tenant['mi-config']['theme'] }}/materialadmin.css" />
+        <link type="text/css" rel="stylesheet" href="//media.hyn.me/css/theme-{{ _tenant['mi-config']['theme'] }}/font-awesome.min.css" />
+        <link type="text/css" rel="stylesheet" href="//media.hyn.me/css/theme-{{ _tenant['mi-config']['theme'] }}/material-design-iconic-font.min.css" />
+        <link href='//fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
+    </head>
+    <body class="menubar-first menubar-pin">
 
-{#
-<nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
-        <ul class="right hide-on-med-and-down">
-            <li><a href="#">Navbar Link</a></li>
-        </ul>
+        {% block header %}{% endblock %}
 
-        <ul id="nav-mobile" class="side-nav">
-            <li><a href="#">Navbar Link</a></li>
-        </ul>
-        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-    </div>
-</nav>
-<div class="section no-pad-bot" id="index-banner">
-    <div class="container">
-        <br><br>
-        <h1 class="header center orange-text">Starter Template</h1>
-        <div class="row center">
-            <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
-        </div>
-        <div class="row center">
-            <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
-        </div>
-        <br><br>
-
-    </div>
-</div>
-
-
-<div class="container">
-    <div class="section">
-
-        <!--   Icon Section   -->
-        <div class="row">
-            <div class="col s12 m4">
-                <div class="icon-block">
-                    <h2 class="center light-blue-text"><i class="mdi-image-flash-on"></i></h2>
-                    <h5 class="center">Speeds up development</h5>
-
-                    <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+        {% block base %}
+        <div id="base">
+            {% block offcanvas_left %}{% endblock %}
+            {% block content %}
+            <div id="content">
+                <section>
+                    {% if section_title %}
+                    <div class="section-header">
+                        <ol class="breadcrumb">
+                            <li class="active">{{ section_title }}</li>
+                        </ol>
+                    </div>
+                    {% endif %}
+                    <div class="section-body">
+                        {% block section_body %}{% endblock %}
+                    </div>
+                </section>
+            </div>
+            {% endblock %}
+            {% block menubar %}
+            <div id="menubar">
+                <div class="menubar-fixed-panel">
+                    <div class="menubar-scroll-panel">
+                        <ul id="main-menu" class="gui-controls gui-controls-tree">
+                            <li>
+                                <a href="{{ route('management-interface@dashboard@index') }}">
+                                    <div class="gui-icon"><i class="fa fa-dashboard"></i></div>
+                                    <span class="title">Dashboard</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('management-interface@website@index') }}">
+                                    <div class="gui-icon"><i class="fa fa-desktop"></i></div>
+                                    <span class="title">Websites</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="menubar-foot-panel">
+                            <a href="http://hyn.me/assistance">
+                                <i class="fa fa-life-ring"></i>
+                                Assistance
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class="col s12 m4">
-                <div class="icon-block">
-                    <h2 class="center light-blue-text"><i class="mdi-social-group"></i></h2>
-                    <h5 class="center">User Experience Focused</h5>
-
-                    <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-                </div>
-            </div>
-
-            <div class="col s12 m4">
-                <div class="icon-block">
-                    <h2 class="center light-blue-text"><i class="mdi-action-settings"></i></h2>
-                    <h5 class="center">Easy to work with</h5>
-
-                    <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
-                </div>
-            </div>
+            {% endblock %}
+            {% block offcanvas_right %}{% endblock %}
         </div>
-
-    </div>
-    <br><br>
-
-    <div class="section">
-
-    </div>
-</div>
-
-<footer class="page-footer orange">
-    <div class="container">
-        <div class="row">
-            <div class="col l6 s12">
-                <h5 class="white-text">Company Bio</h5>
-                <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+        {% endblock %}
 
 
-            </div>
-            <div class="col l3 s12">
-                <h5 class="white-text">Settings</h5>
-                <ul>
-                    <li><a class="white-text" href="#!">Link 1</a></li>
-                    <li><a class="white-text" href="#!">Link 2</a></li>
-                    <li><a class="white-text" href="#!">Link 3</a></li>
-                    <li><a class="white-text" href="#!">Link 4</a></li>
-                </ul>
-            </div>
-            <div class="col l3 s12">
-                <h5 class="white-text">Connect</h5>
-                <ul>
-                    <li><a class="white-text" href="#!">Link 1</a></li>
-                    <li><a class="white-text" href="#!">Link 2</a></li>
-                    <li><a class="white-text" href="#!">Link 3</a></li>
-                    <li><a class="white-text" href="#!">Link 4</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="footer-copyright">
-        <div class="container">
-            Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-        </div>
-    </div>
-</footer>#}
+    <script src="//media.hyn.me/js/libs/jquery/jquery-1.11.2.min.js"></script>
+    <script src="//media.hyn.me/js/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
+    <script src="//media.hyn.me/js/libs/bootstrap/bootstrap.min.js"></script>
+    <script src="//media.hyn.me/js/libs/nanoscroller/jquery.nanoscroller.min.js"></script>
 
-
-<!--  Scripts-->
-<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
-</body>
+    <script src="//media.hyn.me/js/core/source/App.min.js"></script>
+    </body>
 </html>

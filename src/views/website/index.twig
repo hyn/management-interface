@@ -1,1 +1,37 @@
-{% extends _hyn_mi_view_namespace ~ "::template.index" %}
+{% extends _tenant['mi-config']['views-namespace'] ~ "::template.index" %}
+
+{% block section_body %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body no-padding">
+                    <div class="table-responsive no-margin">
+                        <table class="table table-striped no-margin">
+                            <thead>
+                            <tr>
+                                <th>{{ trans_choice('management-interface::website.website',1) }}</th>
+                                <th>{{ trans_choice('management-interface::hostname.hostname',2) }}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for website in websites %}
+                                <tr>
+                                    <td>
+                                        {{ website.id }}
+                                    </td>
+                                    <td>
+                                        {{ website.hostnames.lists('hostname')|slice(0,5)|join(", ") }}
+                                        {% if website.hostnames|length > 5 %}
+                                            <span class="badge">{{ trans('management-interface::generic.n-more', {'n': website.hostnames.count - 5}) }}</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

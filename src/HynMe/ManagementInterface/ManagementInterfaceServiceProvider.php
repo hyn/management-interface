@@ -14,11 +14,16 @@ class ManagementInterfaceServiceProvider extends ServiceProvider {
 
     public function boot()
     {
+        // translations
+        $this->loadTranslationsFrom(__DIR__.'/../../lang', 'management-interface');
+        // adds config variables
         $this->mergeConfigFrom(__DIR__.'/../../config/management-interface.php', 'management-interface');
 
+        // adds views
         $this->loadViewsFrom(__DIR__.'/../../views', Config::get('management-interface.views-namespace'));
 
-        \View::share('_hyn_mi_view_namespace', Config::get('management-interface.views-namespace'));
+        // set management interface view namespace in HynMe tenant view
+        $this->app->make('HynMe\Tenant\View')->put('mi-config', Config::get('management-interface'));
     }
 
 	/**

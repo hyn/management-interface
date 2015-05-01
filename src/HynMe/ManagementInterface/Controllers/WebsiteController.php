@@ -1,10 +1,10 @@
 <?php namespace HynMe\ManagementInterface\Controllers;
 
-use App\Http\Controllers\Controller;
+use HynMe\Framework\Controllers\AbstractController;
 use Config;
 use HynMe\MultiTenant\Contracts\WebsiteRepositoryContract;
 
-class WebsiteController extends Controller
+class WebsiteController extends AbstractController
 {
     /**
      * @var WebsiteRepositoryContract
@@ -20,6 +20,8 @@ class WebsiteController extends Controller
 
     public function index()
     {
+        $this->setViewVariable('section_title', trans_choice('management-interface::website.website',2));
+        $this->setViewVariable('websites', $this->website->paginated());
         return view("{$this->view_namespace}::website.index");
     }
 }
