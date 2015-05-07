@@ -2,7 +2,9 @@
 
 use HynMe\Framework\Controllers\AbstractController;
 use Config;
+use Illuminate\Http\Request;
 use HynMe\MultiTenant\Contracts\WebsiteRepositoryContract;
+use HynMe\MultiTenant\Validators\WebsiteValidator;
 
 class WebsiteController extends AbstractController
 {
@@ -18,10 +20,14 @@ class WebsiteController extends AbstractController
         $this->view_namespace = Config::get('management-interface.views-namespace');
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $this->setViewVariable('section_title', trans_choice('management-interface::website.website',2));
         $this->setViewVariable('websites', $this->website->paginated());
+
+        // form request
+        $this->catchFormRequest($request, $this->website->newInstance('website'), new WebsiteValidator);
+
         return view("{$this->view_namespace}::website.index");
     }
 }

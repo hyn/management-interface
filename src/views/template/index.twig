@@ -4,12 +4,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
 
-        <title>{% if title|default(section_title) %}{{ title|default(section_title) }} &middot; {% endif %}Management interface</title>
+        <title>{% if title|default(section_title) %}{{ title|default(section_title) }} &middot; {% endif %}{{ site_title|default('Management interface') }}</title>
 
         <link type="text/css" rel="stylesheet" href="//media.hyn.me/css/theme-{{ _tenant['mi-config']['theme'] }}/bootstrap.css" />
         <link type="text/css" rel="stylesheet" href="//media.hyn.me/css/theme-{{ _tenant['mi-config']['theme'] }}/materialadmin.css" />
         <link type="text/css" rel="stylesheet" href="//media.hyn.me/css/theme-{{ _tenant['mi-config']['theme'] }}/font-awesome.min.css" />
         <link type="text/css" rel="stylesheet" href="//media.hyn.me/css/theme-{{ _tenant['mi-config']['theme'] }}/material-design-iconic-font.min.css" />
+
+        <!-- plugins -->
+        <link type="text/css" rel="stylesheet" href="//media.hyn.me/css/theme-{{ _tenant['mi-config']['theme'] }}/libs/typeahead/typeahead.css">
+
         <link href='//fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
     </head>
     <body class="menubar-first menubar-pin">
@@ -40,6 +44,7 @@
                 <div class="menubar-fixed-panel">
                     <div class="menubar-scroll-panel">
                         <ul id="main-menu" class="gui-controls gui-controls-tree">
+                            {% block menubar_items %}
                             <li>
                                 <a href="{{ route('management-interface@dashboard@index') }}">
                                     <div class="gui-icon"><i class="fa fa-dashboard"></i></div>
@@ -48,16 +53,19 @@
                             </li>
                             <li>
                                 <a href="{{ route('management-interface@website@index') }}">
-                                    <div class="gui-icon"><i class="fa fa-desktop"></i></div>
+                                    <div class="gui-icon">{% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.icons.website" %}</div>
                                     <span class="title">Websites</span>
                                 </a>
                             </li>
+                            {% endblock %}
                         </ul>
-                        <div class="menubar-foot-panel">
+                        <div class="menubar-foot-panel text-center">
+                            {% block menubar_footer %}
                             <a href="http://hyn.me/assistance">
                                 <i class="fa fa-life-ring"></i>
                                 Assistance
                             </a>
+                            {% endblock %}
                         </div>
                     </div>
                 </div>
@@ -73,6 +81,10 @@
     <script src="//media.hyn.me/js/libs/bootstrap/bootstrap.min.js"></script>
     <script src="//media.hyn.me/js/libs/nanoscroller/jquery.nanoscroller.min.js"></script>
 
+    <!-- plugins -->
+    <script src="//media.hyn.me/js/libs/typeahead/typeahead.bundle.min.js"></script>
+
     <script src="//media.hyn.me/js/core/source/App.min.js"></script>
+    <script src="//media.hyn.me/App.js"></script>
     </body>
 </html>

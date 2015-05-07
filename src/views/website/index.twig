@@ -10,7 +10,7 @@
                             <thead>
                             <tr>
                                 <th>{% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.icons.website" %} {{ trans_choice('management-interface::website.website',1) }}</th>
-                                <th>{{ trans_choice('management-interface::hostname.hostname',2) }}</th>
+                                <th>{% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.icons.hostname" %} {{ trans_choice('management-interface::hostname.hostname',2) }}</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -18,7 +18,7 @@
                             {% for website in websites %}
                                 <tr>
                                     <td>
-                                        {{ website.id }}
+                                        <code>{{ website.id }} {{ website.present().name }}</code>
                                     </td>
                                     <td>
                                         {{ website.present().hostnamesSummary }}
@@ -32,10 +32,23 @@
                                 </tr>
                             {% endfor %}
                             </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2" class="text-center">
+                                        {{ websites.render() }}
+                                    </td>
+                                    <td class="text-right">
+                                        {% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.buttons.add" with {
+                                            'modal': '#add-website-form'
+                                        } %}
+                                    </td>
+                                </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    {% include _tenant['mi-config']['views-namespace'] ~ "::website.forms.add-website" %}
 {% endblock %}

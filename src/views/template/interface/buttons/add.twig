@@ -1,0 +1,5 @@
+{% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.buttons.base" with {
+    'icon': icon ? icon : _tenant['mi-config']['views-namespace'] ~ '::template.interface.icons.add',
+    'color': color ? color : 'primary',
+    'floating_action': true
+} %}

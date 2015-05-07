@@ -1,0 +1,43 @@
+<div class="modal fade" id="add-website-form">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="formModalLabel">{{ trans('management-interface::website.add-website-title') }}</h4>
+            </div>
+            <form class="form-horizontal" role="form" method="POST">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div class="modal-body">
+                    <div class="form-group{% if errors.has('identifier') %} has-error{% endif %}">
+                        <div class="col-sm-3">
+                            <label for="identifier" class="control-label">{{ trans('management-interface::website.identifier') }}</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input
+                                    type="text"
+                                    name="identifier"
+                                    id="identifier"
+                                    class="form-control"
+                                    placeholder="{{ trans('management-interface::website.identifier-ex') }}"
+                                    value=""><div class="form-control-line"></div>
+                            {% if errors.first('identifier') %}<span class="help-block">{{ errors.first('identifier') }}</span>{% endif %}
+                        </div>
+                    </div>
+                    <div class="form-group{% if errors.has('tenant_id') %} has-error{% endif %}">
+                        <div class="col-sm-3">
+                            <label for="tenant_id" class="control-label">{{ trans_choice('management-interface::tenant.tenant',1) }}</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="text" id="tenant_id" class="form-control" data-limit="1" data-source="{{ route('management-interface@tenant@ajax') }}" placeholder="">
+                            {% if errors.first('tenant_id') %}<span class="help-block">{{ errors.first('tenant_id') }}</span>{% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('management-interface::action.cancel') }}</button>
+                    <button type="submit" class="btn btn-primary">{{ trans('management-interface::action.add') }}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
