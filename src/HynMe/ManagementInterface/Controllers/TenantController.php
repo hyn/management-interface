@@ -39,7 +39,7 @@ class TenantController extends AbstractController
         $query = Input::get('query');
 
 
-        $tenants = $this->tenant->queryBuilder('tenant')->where('name', 'ilike', "%{$query}%")->take(10)->lists('name', 'id');
+        $tenants = $this->tenant->queryBuilder('tenant')->where('name', 'like', "%{$query}%")->take(10)->lists('name', 'id');
         return Response::json( $tenants);
     }
 }
