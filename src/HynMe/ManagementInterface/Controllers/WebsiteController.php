@@ -13,6 +13,9 @@ class WebsiteController extends AbstractController
      */
     protected $website;
 
+    /**
+     * @param WebsiteRepositoryContract $website
+     */
     public function __construct(WebsiteRepositoryContract $website)
     {
         $this->website = $website;
@@ -20,6 +23,11 @@ class WebsiteController extends AbstractController
         $this->view_namespace = Config::get('management-interface.views-namespace');
     }
 
+    /**
+     * Loads list of websites and shows add form
+     * @param Request $request
+     * @return \Illuminate\View\View
+     */
     public function index(Request $request)
     {
         $this->setViewVariable('section_title', trans_choice('management-interface::website.website',2));

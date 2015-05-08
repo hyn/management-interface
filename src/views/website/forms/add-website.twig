@@ -28,7 +28,7 @@
                             <label for="tenant_id" class="control-label">{{ trans_choice('management-interface::tenant.tenant',1) }}</label>
                         </div>
                         <div class="col-sm-9">
-                            <input type="text" id="tenant_id" class="form-control" data-limit="1" data-source="{{ route('management-interface@tenant@ajax') }}" placeholder="">
+                            <input name="tenant_id" type="text" id="tenant_id" class="form-control" data-limit="1" data-ajax-select="{{ route('management-interface@tenant@ajax') }}" placeholder="">
                             {% if errors.first('tenant_id') %}<span class="help-block">{{ errors.first('tenant_id') }}</span>{% endif %}
                         </div>
                     </div>

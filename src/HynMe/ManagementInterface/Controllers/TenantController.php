@@ -1,7 +1,7 @@
 <?php namespace HynMe\ManagementInterface\Controllers;
 
 use HynMe\Framework\Controllers\AbstractController;
-use Config, Response;
+use Config, Response, Input;
 use HynMe\MultiTenant\Contracts\TenantRepositoryContract;
 use Illuminate\Http\Request;
 
@@ -30,8 +30,16 @@ class TenantController extends AbstractController
         return view("{$this->view_namespace}::website.index");
     }
 
+    /**
+     * Ajax results
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function ajax()
     {
-        return Response::json($this->tenant->all()->lists('name', 'id'));
+        $query = Input::get('query');
+
+
+        $tenants = $this->tenant->queryBuilder('tenant')->where('name', 'ilike', "%{$query}%")->take(10)->lists('name', 'id');
+        return Response::json( $tenants);
     }
 }
