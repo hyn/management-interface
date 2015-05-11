@@ -24,8 +24,6 @@ class TenantController extends AbstractController
         $this->setViewVariable('section_title', trans_choice('management-interface::website.website',2));
         $this->setViewVariable('websites', $this->tenant->paginated());
 
-        // form request
-//        $this->catchFormRequest($request, $this->website->newInstance('website'), new WebsiteValidator);
 
         return view("{$this->view_namespace}::website.index");
     }

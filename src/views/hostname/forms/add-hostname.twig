@@ -1,0 +1,34 @@
+<div class="modal fade" id="add-hostname-form"{% if errors.count > 0 %} data-show="true"{% endif %}>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="formModalLabel">{{ trans('management-interface::hostname.add-hostname-title') }}</h4>
+            </div>
+            <form class="form-horizontal" role="form" method="POST">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div class="modal-body">
+                    <div class="form-group{% if errors.has('hostname') %} has-error{% endif %}">
+                        <div class="col-sm-3">
+                            <label for="hostname" class="control-label">{{ trans_choice('management-interface::hostname.hostname',1) }}</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input
+                                    type="text"
+                                    name="hostname"
+                                    id="hostname"
+                                    class="form-control"
+                                    placeholder="{{ trans('management-interface::hostname.hostname-ex') }}"
+                                    value=""><div class="form-control-line"></div>
+                            {% if errors.first('hostname') %}<span class="help-block">{{ errors.first('hostname') }}</span>{% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('management-interface::action.cancel') }}</button>
+                    <button type="submit" class="btn btn-primary">{{ trans('management-interface::action.add') }}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
