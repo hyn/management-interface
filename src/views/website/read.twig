@@ -8,45 +8,7 @@
                     <header><h5>{{ trans_choice('management-interface::hostname.hostname',2) }}</h5></header>
                 </div>
                 <div class="card-body no-padding">
-                    <div class="table-responsive no-margin">
-                        <table class="table table-striped no-margin">
-                            <thead>
-                            <tr>
-                                <th>{{ trans_choice('management-interface::hostname.hostname',1) }}</th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for hostname in website.hostnames().paginate(20) %}
-                                <tr>
-                                    <td>
-                                        {{ hostname.hostname }}
-                                    </td>
-                                    <td>
-
-                                    </td>
-                                    <td class="text-right">
-                                        {% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.buttons.delete" with {'size': 'xs', 'href': route('management-interface@hostname@delete', hostname.present().urlArguments)} %}
-                                    </td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-
-                            <tfoot>
-                            <tr>
-                                <td colspan="2" class="text-center">
-                                    {{ websites.render() }}
-                                </td>
-                                <td class="text-right">
-                                    {% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.buttons.add" with {
-                                    'modal': '#add-hostname-form'
-                                    } %}
-                                </td>
-                            </tr>
-                            </tfoot>
-                        </table>
-                    </div>
+                    {% include _tenant['mi-config']['views-namespace'] ~ "::template.tables.hostnames" with {'hostnames': website.hostnames().paginate()} %}
                 </div>
             </div>
         </div>

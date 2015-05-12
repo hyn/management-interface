@@ -3,6 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
 
         <title>{% if title|default(section_title) %}{{ title|default(section_title) }} &middot; {% endif %}{{ site_title|default('Management interface') }}</title>
 
@@ -13,7 +14,7 @@
 
         <!-- plugins -->
         <link type="text/css" rel="stylesheet" href="//media.hyn.me/css/theme-{{ _tenant['mi-config']['theme'] }}/libs/typeahead/typeahead.css">
-        <link type="text/css" rel="stylesheet" href="//media.hyn.me/css/theme-{{ _tenant['mi-config']['theme'] }}/libs/select2/select2.css">
+        <link type="text/css" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css">
 
         <link href='//fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
     </head>
@@ -84,7 +85,7 @@
 
     <!-- plugins -->
     <script src="//media.hyn.me/js/libs/typeahead/typeahead.bundle.min.js"></script>
-    <script src="//media.hyn.me/js/libs/select2/select2.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
 
     <script src="//media.hyn.me/js/core/source/App.min.js"></script>
     <script src="//media.hyn.me/App.js"></script>

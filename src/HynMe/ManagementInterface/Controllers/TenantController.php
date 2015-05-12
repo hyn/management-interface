@@ -34,10 +34,6 @@ class TenantController extends AbstractController
      */
     public function ajax()
     {
-        $query = Input::get('query');
-
-
-        $tenants = $this->tenant->queryBuilder('tenant')->where('name', 'like', "%{$query}%")->take(10)->lists('name', 'id');
-        return Response::json( $tenants);
+        return Response::json($this->tenant->ajaxQuery('name'));
     }
 }

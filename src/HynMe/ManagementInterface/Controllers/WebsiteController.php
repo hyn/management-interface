@@ -3,6 +3,7 @@
 
 use Config;
 use Illuminate\Http\Request;
+use Response;
 
 use HynMe\Framework\Controllers\AbstractController;
 use HynMe\MultiTenant\Contracts\HostnameRepositoryContract;
@@ -116,5 +117,14 @@ class WebsiteController extends AbstractController
             new WebsiteValidator,
             redirect()->route('management-interface@website@read', $website->present()->urlArguments)
         );
+    }
+
+    /**
+     * Ajax requested results
+     * @return mixed
+     */
+    public function ajax()
+    {
+        return Response::json($this->website->ajaxQuery('identifier'));
     }
 }
