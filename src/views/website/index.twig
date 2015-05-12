@@ -28,6 +28,7 @@
                                     </td>
                                     <td class="text-right">
                                         {% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.buttons.view" with {'size': 'xs', 'href': route('management-interface@website@read', website.present().urlArguments)} %}
+                                        {% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.buttons.update" with {'size': 'xs', 'href': route('management-interface@website@update', website.present().urlArguments)} %}
                                         {% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.buttons.delete" with {'size': 'xs', 'href': route('management-interface@website@delete', website.present().urlArguments)} %}
                                     </td>
                                 </tr>

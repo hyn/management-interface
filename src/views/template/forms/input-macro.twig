@@ -1,0 +1,41 @@
+{% macro open(name,label,errors) %}
+    <div class="form-group{% if errors.has(name) %} has-error{% endif %}">
+        <div class="col-sm-3">
+            <label for="{{ name }}" class="control-label">
+                {{ label }}
+            </label>
+        </div>
+        <div class="col-sm-9">
+{% endmacro %}
+
+{% macro close(name,errors) %}
+            <div class="form-control-line"></div>
+            {% for error in errors.get(name) %}
+                <span class="help-block">{{ error }}</span>
+            {% endfor %}
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro text(name,object,placeholder) %}
+    <input
+        type="text"
+        name="{{ name }}"
+        id="{{ name }}"
+        class="form-control"
+        {% if placeholder %}placeholder="{{ placeholder }}"{% endif %}
+        value="{{ attribute(object, name) }}"
+        >
+{% endmacro %}
+
+{% macro ajaxSelect(name, object, url, limit) %}
+    <input
+            name="{{ name }}"
+            value="{{ attribute(object, name) }}"
+            type="text"
+            id="{{ name }}"
+            class="form-control"
+            data-limit="{{ limit|default(1) }}"
+            data-ajax-select="{{ url }}"
+            >
+{% endmacro %}

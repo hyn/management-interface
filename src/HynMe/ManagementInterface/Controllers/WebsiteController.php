@@ -95,7 +95,26 @@ class WebsiteController extends AbstractController
             new HostnameValidator,
             redirect()->route('management-interface@website@read', $website->present()->urlArguments)
         );
+    }
 
-
+    /**
+     * Edit a website
+     * @param $website
+     * @param $identifier
+     * @return $this|bool|\HynMe\Framework\Models\AbstractModel|null
+     */
+    public function update($website, $identifier)
+    {
+        return $this->catchFormRequest(function() use ($website, $identifier)
+        {
+            $this->setViewVariable('website', $website);
+            $this->setViewVariable('section_title', $identifier);
+            return view("{$this->view_namespace}::website.update");
+        },
+            $this->request,
+            $website,
+            new WebsiteValidator,
+            redirect()->route('management-interface@website@read', $website->present()->urlArguments)
+        );
     }
 }
