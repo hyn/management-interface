@@ -1,0 +1,49 @@
+
+<div class="table-responsive no-margin">
+    <table class="table table-striped no-margin">
+        <thead>
+        <tr>
+            <th></th>
+            <th>{{ trans_choice('management-interface::hostname.hostname',1) }}</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for hostname in hostnames %}
+            <tr>
+                <td>
+                    {% if hostname.redirect_to %}
+                        {% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.icons.redirect" %}
+                    {% elseif hostname.prefer_https %}
+                        {% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.icons.prefer_https" %}
+                    {% endif %}
+                </td>
+                <td>
+                    {{ hostname.hostname }}
+                </td>
+                <td>
+
+                </td>
+                <td class="text-right">
+                    {% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.buttons.update" with {'size': 'xs', 'href': route('management-interface@hostname@update', hostname.present().urlArguments)} %}
+                    {% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.buttons.delete" with {'size': 'xs', 'href': route('management-interface@hostname@delete', hostname.present().urlArguments)} %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+        <tfoot>
+        <tr>
+            <td colspan="3" class="text-center">
+                {{ hostnames.render() }}
+            </td>
+            <td class="text-right">
+                {% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.buttons.add" with {
+                'modal': '#add-hostname-form'
+                } %}
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+</div>
