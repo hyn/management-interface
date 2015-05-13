@@ -25,10 +25,8 @@ class ManagementInterfaceServiceProvider extends ServiceProvider {
         $this->loadViewsFrom(__DIR__.'/../../views', Config::get('management-interface.views-namespace'));
 
         // set management interface view namespace in HynMe tenant view
-        $this->app->make('HynMe\Tenant\View')->merge([
-            'mi-config', Config::get('management-interface'),
-            'mi-read-only', env('HYN_READ_ONLY') && !in_array(Request::ip(), explode(',', env('HYN_READ_ONLY_WHITELIST')))
-        ]);
+        $this->app->make('HynMe\Tenant\View')->put('mi-config', Config::get('management-interface'));
+        $this->app->make('HynMe\Tenant\View')->put('mi-read-only', env('HYN_READ_ONLY') && !in_array(Request::ip(), explode(',', env('HYN_READ_ONLY_WHITELIST'))));
     }
 
 	/**
