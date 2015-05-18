@@ -2,6 +2,7 @@
 
 
 use Config;
+use HynMe\Webserver\Generators\Webserver\Nginx;
 use Illuminate\Http\Request;
 use Response;
 

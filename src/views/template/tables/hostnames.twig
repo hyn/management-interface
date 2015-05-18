@@ -35,8 +35,8 @@
 
         <tfoot>
         <tr>
-            <td colspan="3" class="text-center">
-                {{ hostnames.render() }}
+            <td colspan="3">
+                {{ hostnames.render()|raw }}
             </td>
             <td class="text-right">
                 {% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.buttons.add" with {
