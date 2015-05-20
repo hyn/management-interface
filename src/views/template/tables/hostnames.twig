@@ -35,13 +35,12 @@
 
         <tfoot>
         <tr>
-            <td colspan="3">
-                {{ hostnames.render()|raw }}
-            </td>
-            <td class="text-right">
+            <td colspan="4" class="text-center">
                 {% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.buttons.add" with {
-                'modal': '#add-hostname-form'
+                    'modal': '#add-hostname-form',
+                    'pull': 'right'
                 } %}
+                {{ hostnames.render()|raw }}
             </td>
         </tr>
         </tfoot>

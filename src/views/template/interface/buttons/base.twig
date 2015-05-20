@@ -15,6 +15,7 @@
         {%- if block|default(false) %} btn-block{% endif -%}
         {%- if floating_action|default(false) %} btn-floating-action{% endif -%}
         {%- if icon_toggle|default(false) %} btn-icon-toggle{% endif -%}
+        {%- if pull|default(false) %} pull-{{ pull }}{% endif -%}
         "
         {% if href|default(false) %}href="{{ href|default("#") }}"{% endif %}
         {% if target|default(false) %}target="{{ target }}"{% endif %}

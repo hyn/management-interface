@@ -80,7 +80,6 @@ class WebsiteController extends AbstractController
      */
     public function read($website, $identifier)
     {
-
         $hostname = $this->hostname->newInstance('hostname');
         $hostname->tenant_id = $website->tenant_id;
         $hostname->website_id = $website->id;
