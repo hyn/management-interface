@@ -13,3 +13,94 @@ A management interface for the packages:
 This package uses the theme ["Material Admin" by CodeCovers](http://themeforest.net/item/material-admin-bootstrap-admin-html5-app/10646222).
 
 Until a different licensing strategy is possible with this developer you are required to buy an appropriate license for this theme.
+
+## Routes
+
+You can use the management-interface package by setting the following routes in your tenant or global `routes.php` file.  
+
+```php
+Route::group(['prefix' => 'management', 'namespace'=>'HynMe\ManagementInterface\Controllers'], function()
+{
+    /*
+     * Dashboard specific routes
+     * @uses HynMe\ManagementInterface\Controllers\DashboardController
+     */
+    Route::any('dashboard', [
+        'as' => 'management-interface@dashboard@index',
+        'uses' => 'DashboardController@index'
+    ]);
+    /*
+     * Website model binding
+     */
+    Route::model('website', 'HynMe\MultiTenant\Models\Website');
+    /*
+     * Website specific routes
+     * @uses HynMe\ManagementInterface\Controllers\WebsiteController
+     */
+    Route::any('websites', [
+        'as' => 'management-interface@website@index',
+        'uses' => 'WebsiteController@index'
+    ]);
+    Route::any('website/{website}/{name}', [
+        'as' => 'management-interface@website@read',
+        'uses' => 'WebsiteController@read'
+    ]);
+    Route::any('website/{website}/{name}/delete', [
+        'as' => 'management-interface@website@delete',
+        'uses' => 'WebsiteController@delete'
+    ]);
+    Route::any('website/{website}/{name}/update', [
+        'as' => 'management-interface@website@update',
+        'uses' => 'WebsiteController@update'
+    ]);
+    Route::post('ajax/websites', [
+        'as' => 'management-interface@website@ajax',
+        'uses' => 'WebsiteController@ajax'
+    ]);
+    /*
+     * Hostname model binding
+     */
+    Route::model('hostname', 'HynMe\MultiTenant\Models\Hostname');
+    /*
+     * Hostname specific routes
+     * @uses HynMe\ManagementInterface\Controllers\HostnameController
+     */
+    Route::any('hostname/{hostname}/{name}/delete', [
+        'as' => 'management-interface@hostname@delete',
+        'uses' => 'HostnameController@delete'
+    ]);
+    Route::any('hostname/{hostname}/{name}/update', [
+        'as' => 'management-interface@hostname@update',
+        'uses' => 'HostnameController@update'
+    ]);
+    Route::post('ajax/hostnames', [
+        'as' => 'management-interface@hostname@ajax',
+        'uses' => 'HostnameController@ajax'
+    ]);
+    /*
+     * Hostname model binding
+     */
+    Route::model('tenant', 'HynMe\MultiTenant\Models\Tenant');
+    /*
+     * Tenant specific routes
+     * @uses HynMe\ManagementInterface\Controllers\TenantController
+     */
+    Route::post('ajax/tenants', [
+        'as' => 'management-interface@tenant@ajax',
+        'uses' => 'TenantController@ajax'
+    ]);
+
+    /*
+     * Ssl model binding
+     */
+    Route::model('ssl', 'HynMe\Webserver\Models\SslCertificate');
+    /*
+     * Ssl specific routes
+     * @uses HynMe\ManagementInterface\Controllers\SslController
+     */
+    Route::any('ssl', [
+        'as' => 'management-interface@ssl@index',
+        'uses' => 'SslController@index'
+    ]);
+});
+```
