@@ -18,7 +18,7 @@ Until a different licensing strategy is possible with this developer you are req
 
 You can use the management-interface package by setting the following routes in your tenant or global `routes.php` file.
   
-It is a design choice to give you your own freedom to secure these routes; I suggest you use an auth filter on the group. 
+It is a design choice to give you your own freedom to secure these routes; I suggest you use the [auth middleware filter](http://laravel.com/docs/5.0/authentication#protecting-routes) on the group. 
 
 ```php
 Route::group(['prefix' => 'management', 'namespace'=>'HynMe\ManagementInterface\Controllers'], function()
