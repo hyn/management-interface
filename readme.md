@@ -16,7 +16,9 @@ Until a different licensing strategy is possible with this developer you are req
 
 ## Routes
 
-You can use the management-interface package by setting the following routes in your tenant or global `routes.php` file.  
+You can use the management-interface package by setting the following routes in your tenant or global `routes.php` file.
+  
+It is a design choice to give you your own freedom to secure these routes; I suggest you use an auth filter on the group. 
 
 ```php
 Route::group(['prefix' => 'management', 'namespace'=>'HynMe\ManagementInterface\Controllers'], function()
