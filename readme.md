@@ -94,11 +94,13 @@ Route::group(['prefix' => 'management', 'namespace'=>'HynMe\ManagementInterface\
 
     /*
      * Ssl model binding
+     * @requires hyn-me/webserver
      */
     Route::model('ssl', 'HynMe\Webserver\Models\SslCertificate');
     /*
      * Ssl specific routes
      * @uses HynMe\ManagementInterface\Controllers\SslController
+     * @requires hyn-me/webserver
      */
     Route::any('ssl', [
         'as' => 'management-interface@ssl@index',
