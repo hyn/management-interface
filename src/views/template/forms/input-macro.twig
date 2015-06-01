@@ -28,6 +28,18 @@
         >
 {% endmacro %}
 
+{% macro textarea(name, object, placeholder) %}
+    <textarea
+        name="{{ name }}"
+        id="{{ name }}"
+        class="form-control"
+        rows="3"
+        {% if placeholder %}placeholder="{{ placeholder }}"{% endif %}
+        >
+        {{- attribute(object, name) -}}
+    </textarea>
+{% endmacro %}
+
 {% macro ajaxSelect(name, object, url, limit, relation) %}
 
     <select

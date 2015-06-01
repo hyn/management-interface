@@ -1,0 +1,36 @@
+{% import _tenant['mi-config']['views-namespace'] ~ "::template.forms.input-macro" as input %}
+<div class="modal fade" id="add-website-form"{% if errors.count > 0 %} data-show="true"{% endif %}>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="formModalLabel">{{ trans('management-interface::ssl.add-ssl-title') }}</h4>
+            </div>
+            <form class="form-horizontal" role="form" method="POST">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div class="modal-body">
+                    {{ input.open('tenant_id',trans_choice('management-interface::tenant.tenant',1), errors) }}
+                    {{ input.ajaxSelect('tenant_id',website,route('management-interface@tenant@ajax'),1) }}
+                    {{ input.close('tenant_id', errors) }}
+
+                    {{ input.open('certificate',trans_choice('management-interface::ssl.certificate',1), errors) }}
+                    {{ input.textarea('certificate',website) }}
+                    {{ input.close('certificate', errors) }}
+
+                    {{ input.open('authority_bundle',trans('management-interface::ssl.authority_bundle'), errors) }}
+                    {{ input.textarea('authority_bundle',website) }}
+                    {{ input.close('authority_bundle', errors) }}
+
+                    {{ input.open('key',trans('management-interface::ssl.key'), errors) }}
+                    {{ input.textarea('key',website) }}
+                    {{ input.close('key', errors) }}
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('management-interface::action.cancel') }}</button>
+                    <button type="submit" class="btn btn-primary">{{ trans('management-interface::action.add') }}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -7,10 +7,10 @@
 
         <title>{% if title|default(section_title) %}{{ title|default(section_title) }} &middot; {% endif %}{{ site_title|default('Management interface') }}</title>
 
-        <link type="text/css" rel="stylesheet" href="//media.hyn.me/css/theme-{{ _tenant['mi-config']['theme'] }}/bootstrap.css" />
-        <link type="text/css" rel="stylesheet" href="//media.hyn.me/css/theme-{{ _tenant['mi-config']['theme'] }}/materialadmin.css" />
-        <link type="text/css" rel="stylesheet" href="//media.hyn.me/css/theme-{{ _tenant['mi-config']['theme'] }}/font-awesome.min.css" />
-        <link type="text/css" rel="stylesheet" href="//media.hyn.me/css/theme-{{ _tenant['mi-config']['theme'] }}/material-design-iconic-font.min.css" />
+        <link type="text/css" rel="stylesheet" href="//media.hyn.me/css/theme-{{ _theme|default(_tenant['mi-config']['theme']) }}/bootstrap.css" />
+        <link type="text/css" rel="stylesheet" href="//media.hyn.me/css/theme-{{ _theme|default(_tenant['mi-config']['theme']) }}/materialadmin.css" />
+        <link type="text/css" rel="stylesheet" href="//media.hyn.me/css/theme-{{ _theme|default(_tenant['mi-config']['theme']) }}/font-awesome.min.css" />
+        <link type="text/css" rel="stylesheet" href="//media.hyn.me/css/theme-{{ _theme|default(_tenant['mi-config']['theme']) }}/material-design-iconic-font.min.css" />
 
         <!-- plugins -->
         <link type="text/css" rel="stylesheet" href="//media.hyn.me/css/theme-{{ _tenant['mi-config']['theme'] }}/libs/typeahead/typeahead.css">
@@ -47,16 +47,22 @@
                     <div class="menubar-scroll-panel">
                         <ul id="main-menu" class="gui-controls gui-controls-tree">
                             {% block menubar_items %}
-                            <li>
+                            <li{% if route('management-interface@dashboard@index') == _tenant.current_url %} class="active"{% endif %}>
                                 <a href="{{ route('management-interface@dashboard@index') }}">
                                     <div class="gui-icon"><i class="fa fa-dashboard"></i></div>
                                     <span class="title">Dashboard</span>
                                 </a>
                             </li>
-                            <li>
+                            <li{% if route('management-interface@website@index') == _tenant.current_url %} class="active"{% endif %}>
                                 <a href="{{ route('management-interface@website@index') }}">
                                     <div class="gui-icon">{% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.icons.website" %}</div>
-                                    <span class="title">Websites</span>
+                                    <span class="title">{{ trans_choice('management-interface::website.website',2) }}</span>
+                                </a>
+                            </li>
+                            <li{% if route('management-interface@ssl@index') == _tenant.current_url %} class="active"{% endif %}>
+                                <a href="{{ route('management-interface@ssl@index') }}">
+                                    <div class="gui-icon">{% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.icons.ssl" %}</div>
+                                    <span class="title">{{ trans_choice('management-interface::ssl.ssl',2) }}</span>
                                 </a>
                             </li>
                             {% endblock %}
