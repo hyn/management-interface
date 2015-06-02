@@ -78,7 +78,17 @@ class SslController extends AbstractController
      */
     public function read($ssl)
     {
+        $this->setViewVariable('section_title',trans_choice('management-interface::ssl.ssl',1));
 
+        return $this->catchFormRequest(function() use ($ssl) {
+            $this->setViewVariable('certificate', $ssl);
+            return view("{$this->view_namespace}::ssl.read");
+        },
+            $this->request,
+            $this->ssl->newInstance(),
+            new SslValidator,
+            redirect()->route('management-interface@ssl@read', $ssl->present()->urlArguments)
+        );
     }
 
     /**
