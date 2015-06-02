@@ -127,4 +127,10 @@ class WebsiteController extends AbstractController
     {
         return Response::json($this->website->ajaxQuery('identifier'));
     }
+
+    public function saveConfigurations($website, $identifer)
+    {
+        $website->touch();
+        return redirect()->route('management-interface@website@read', $website->present()->urlArguments);
+    }
 }
