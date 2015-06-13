@@ -1,6 +1,6 @@
-{% extends "management-interface::template.index" %}
+@extends('management-interface::template.index')
 
-{% block section_body %}
+@section('section_body')
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -9,27 +9,27 @@
                         <input type="hidden" name="_method" value="delete">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <p class="alert alert-danger">
-                            {{ trans('management-interface::request.confirm-deletion-of', {'name': model.present().name}) }}
+                            {{ trans('management-interface::request.confirm-deletion-of', ['name' => $model->present()->name]) }}
                         </p>
 
                         <div class="form-group{% if errors.has('confirm') %} has-error{% endif %}">
                             <div class="col-sm-3">
                             </div>
                             <div class="col-sm-9">
-
-                                <div class="checkbox checkbox-styled checkbox-danger">
+                                <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" name="confirm" value="1">
-                                        <span>{{ trans('management-interface::generic.i-confirm-deletion-of', {'name': model.present().name}) }}</span>
+                                        <input type="checkbox" name="confirm" value="1"><span class="checkbox-material"><span class="check"></span></span> {{ trans('management-interface::generic.i-confirm-deletion-of', ['name' => $model->present()->name]) }}
                                     </label>
                                 </div>
-                                {% if errors.first('confirm') %}<span class="help-block">{{ errors.first('confirm') }}</span>{% endif %}
+                                @if($errors->first('confirm'))
+                                    <span class="help-block">{{ $errors->first('confirm') }}</span>
+                                @endif
                             </div>
                         </div>
-                        {% include "management-interface::template.interface.buttons.delete" with {} %}
+                        @include('management-interface::template.interface.buttons.delete')
                     </form>
                 </div>
             </div>
         </div>
     </div>
-{% endblock %}
+@endsection
