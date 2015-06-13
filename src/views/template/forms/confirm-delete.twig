@@ -1,4 +1,4 @@
-{% extends _tenant['mi-config']['views-namespace'] ~ "::template.index" %}
+{% extends "management-interface::template.index" %}
 
 {% block section_body %}
     <div class="row">
@@ -26,7 +26,7 @@
                                 {% if errors.first('confirm') %}<span class="help-block">{{ errors.first('confirm') }}</span>{% endif %}
                             </div>
                         </div>
-                        {% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.buttons.delete" with {} %}
+                        {% include "management-interface::template.interface.buttons.delete" with {} %}
                     </form>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-{% import _tenant['mi-config']['views-namespace'] ~ "::template.forms.input-macro" as input %}
+{% import "management-interface::template.forms.input-macro" as input %}
 
 <form class="form-horizontal" role="form" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">

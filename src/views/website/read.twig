@@ -1,4 +1,4 @@
-{% extends _tenant['mi-config']['views-namespace'] ~ "::template.index" %}
+{% extends "management-interface::template.index" %}
 
 {% block section_body %}
     <div class="row">
@@ -8,10 +8,10 @@
                     <header><h5>{{ trans_choice('management-interface::hostname.hostname',2) }}</h5></header>
                 </div>
                 <div class="card-body no-padding">
-                    {% include _tenant['mi-config']['views-namespace'] ~ "::template.tables.hostnames" with {'hostnames': website.hostnames().paginate()} %}
+                    {% include "management-interface::template.tables.hostnames" with {'hostnames': website.hostnames().paginate()} %}
                 </div>
             </div>
         </div>
     </div>
-    {% include _tenant['mi-config']['views-namespace'] ~ "::hostname.forms.add-hostname" %}
+    {% include "management-interface::hostname.forms.add-hostname" %}
 {% endblock %}

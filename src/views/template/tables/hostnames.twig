@@ -14,9 +14,9 @@
             <tr>
                 <td>
                     {% if hostname.redirect_to %}
-                        {% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.icons.redirect" %}
+                        {% include "management-interface::template.interface.icons.redirect" %}
                     {% elseif hostname.prefer_https %}
-                        {% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.icons.prefer_https" %}
+                        {% include "management-interface::template.interface.icons.prefer_https" %}
                     {% endif %}
                 </td>
                 <td>
@@ -26,8 +26,8 @@
 
                 </td>
                 <td class="text-right">
-                    {% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.buttons.update" with {'size': 'xs', 'href': route('management-interface@hostname@update', hostname.present().urlArguments)} %}
-                    {% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.buttons.delete" with {'size': 'xs', 'href': route('management-interface@hostname@delete', hostname.present().urlArguments)} %}
+                    {% include "management-interface::template.interface.buttons.update" with {'size': 'xs', 'href': route('management-interface@hostname@update', hostname.present().urlArguments)} %}
+                    {% include "management-interface::template.interface.buttons.delete" with {'size': 'xs', 'href': route('management-interface@hostname@delete', hostname.present().urlArguments)} %}
                 </td>
             </tr>
         {% endfor %}
@@ -36,7 +36,7 @@
         <tfoot>
         <tr>
             <td colspan="4" class="text-center">
-                {% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.buttons.add" with {
+                {% include "management-interface::template.interface.buttons.add" with {
                     'modal': '#add-hostname-form',
                     'pull': 'right'
                 } %}

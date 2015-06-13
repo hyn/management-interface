@@ -1,4 +1,4 @@
-{% extends _tenant['mi-config']['views-namespace'] ~ "::template.index" %}
+{% extends "management-interface::template.index" %}
 
 {% block section_body %}
     <div class="row">
@@ -9,9 +9,9 @@
                         <table class="table table-striped no-margin">
                             <thead>
                             <tr>
-                                <th>{% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.icons.ssl" %} {{ trans_choice('management-interface::ssl.ssl',1) }}</th>
-                                <th>{% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.icons.hostname" %} {{ trans_choice('management-interface::hostname.hostname',2) }}</th>
-                                <th>{% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.icons.expiry" %} {{ trans('management-interface::ssl.invalidates_at') }}</th>
+                                <th>{% include "management-interface::template.interface.icons.ssl" %} {{ trans_choice('management-interface::ssl.ssl',1) }}</th>
+                                <th>{% include "management-interface::template.interface.icons.hostname" %} {{ trans_choice('management-interface::hostname.hostname',2) }}</th>
+                                <th>{% include "management-interface::template.interface.icons.expiry" %} {{ trans('management-interface::ssl.invalidates_at') }}</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -31,9 +31,9 @@
                                         {{ certificate.present().expiry }}
                                     </td>
                                     <td class="text-right">
-                                        {% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.buttons.view" with {'size': 'xs', 'href': route('management-interface@ssl@read', certificate.present().urlArguments)} %}
-                                        {#{% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.buttons.update" with {'size': 'xs', 'href': route('management-interface@website@update', website.present().urlArguments)} %}#}
-                                        {% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.buttons.delete" with {'size': 'xs', 'href': route('management-interface@ssl@delete', certificate.present().urlArguments)} %}
+                                        {% include "management-interface::template.interface.buttons.view" with {'size': 'xs', 'href': route('management-interface@ssl@read', certificate.present().urlArguments)} %}
+                                        {#{% include "management-interface::template.interface.buttons.update" with {'size': 'xs', 'href': route('management-interface@website@update', website.present().urlArguments)} %}#}
+                                        {% include "management-interface::template.interface.buttons.delete" with {'size': 'xs', 'href': route('management-interface@ssl@delete', certificate.present().urlArguments)} %}
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -44,7 +44,7 @@
                                         {{ certificates.render()|raw }}
                                     </td>
                                     <td class="text-right">
-                                        {% include _tenant['mi-config']['views-namespace'] ~ "::template.interface.buttons.add" with {
+                                        {% include "management-interface::template.interface.buttons.add" with {
                                             'modal': '#add-website-form'
                                         } %}
                                     </td>
@@ -56,5 +56,5 @@
             </div>
         </div>
     </div>
-    {% include _tenant['mi-config']['views-namespace'] ~ "::ssl.forms.add-certificate" %}
+    {% include "management-interface::ssl.forms.add-certificate" %}
 {% endblock %}

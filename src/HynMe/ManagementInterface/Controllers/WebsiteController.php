@@ -40,7 +40,7 @@ class WebsiteController extends AbstractController
 
         $this->hostname = $hostname;
 
-        $this->view_namespace = Config::get('management-interface.views-namespace');
+        $this->view_namespace = 'management-interface';
     }
 
     /**
