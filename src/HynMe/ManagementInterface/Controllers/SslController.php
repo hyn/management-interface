@@ -2,10 +2,9 @@
 
 
 use Config;
+use HynMe\ManagementInterface\Form\Generator;
 use HynMe\Webserver\Contracts\SslRepositoryContract;
-use HynMe\Webserver\Generators\Webserver\Nginx;
 use Illuminate\Http\Request;
-use Response;
 
 use HynMe\Framework\Controllers\AbstractController;
 use HynMe\MultiTenant\Contracts\HostnameRepositoryContract;
@@ -36,7 +35,7 @@ class SslController extends AbstractController
         $this->ssl = $ssl;
         $this->request = $request;
 
-        $this->view_namespace = Config::get('management-interface.views-namespace');
+        $this->view_namespace = 'management-interface';
     }
 
     /**
@@ -47,18 +46,14 @@ class SslController extends AbstractController
     {
         $this->setViewVariable('section_title', trans_choice('management-interface::ssl.ssl',2));
 
+        $form = new Generator($this->ssl->newInstance(), new SslValidator, [
+            'redirect' => redirect()->route('management-interface@ssl@index')
+        ]);
 
         return $this->catchFormRequest(function() {
             $this->setViewVariable('certificates', $this->ssl->paginated());
             return view("{$this->view_namespace}::ssl.index");
-        },
-            $this->request,
-            $this->ssl->newInstance(),
-            new SslValidator,
-            redirect()->route('management-interface@ssl@index')
-        );
-
-        return view("{$this->view_namespace}::ssl.index");
+        }, $form);
     }
 
     /**
@@ -80,15 +75,14 @@ class SslController extends AbstractController
     {
         $this->setViewVariable('section_title',trans_choice('management-interface::ssl.ssl',1));
 
+        $form = new Generator($this->ssl->newInstance(), new SslValidator, [
+            'redirect' => redirect()->route('management-interface@ssl@read', $ssl->present()->urlArguments)
+        ]);
+
         return $this->catchFormRequest(function() use ($ssl) {
             $this->setViewVariable('certificate', $ssl);
             return view("{$this->view_namespace}::ssl.read");
-        },
-            $this->request,
-            $this->ssl->newInstance(),
-            new SslValidator,
-            redirect()->route('management-interface@ssl@read', $ssl->present()->urlArguments)
-        );
+        }, $form);
     }
 
     /**

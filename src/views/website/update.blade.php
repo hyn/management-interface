@@ -1,13 +1,13 @@
-{% extends "management-interface::template.index" %}
+@extends('management-interface::template.index')
 
-{% block section_body %}
+@section('section_body')
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body no-padding">
-                    {% include "management-interface::hostname.forms.update-hostname" %}
+                    @include("management-interface::website.forms.update-website")
                 </div>
             </div>
         </div>
     </div>
-{% endblock %}
+@overwrite

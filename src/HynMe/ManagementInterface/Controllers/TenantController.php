@@ -19,7 +19,7 @@ class TenantController extends AbstractController
         $this->view_namespace = Config::get('management-interface.views-namespace');
     }
 
-    public function index(Request $request)
+    public function index()
     {
         $this->setViewVariable('section_title', trans_choice('management-interface::website.website',2));
         $this->setViewVariable('websites', $this->tenant->paginated());

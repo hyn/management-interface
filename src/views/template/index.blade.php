@@ -28,10 +28,17 @@
         @yield('header')
 
         <div id="base" class="row-fluid">
+            @if(isset($section_title))
+                <div class="section-header col-md-12">
+                    <h1 class="text-right">
+                        {{ $section_title }}
+                    </h1>
+                </div>
+            @endif
             <div id="menubar" class="col-md-2">
                 <div>
                     <div>
-                        <ul id="main-menu">
+                        <ul id="main-menu" class="nav nav-pills nav-stacked">
                             @section('menubar_items')
                             <li
                                 @if(route('management-interface@dashboard@index') == $_tenant['current_url'])
@@ -40,7 +47,7 @@
                             >
                                 <a href="{{ route('management-interface@dashboard@index') }}">
                                     <div><i class="fa fa-dashboard"></i></div>
-                                    <span>Dashboard</span>
+                                    <span>{{ trans('management-interface::dashboard.dashboard') }}</span>
                                 </a>
                             </li>
                                 <li
@@ -63,7 +70,7 @@
                                     <span>{{ trans_choice('management-interface::ssl.ssl',2) }}</span>
                                 </a>
                             </li>
-                            @endsection
+                            @show
                         </ul>
                         <div class="menubar-foot-panel text-center">
                             @section('menubar_footer')
@@ -78,13 +85,6 @@
             </div>
             <div id="content" class="col-md-10">
                 <section>
-                    @if(isset($section_title))
-                        <div class="section-header">
-                            <h1 class="text-right">
-                                {{ $section_title }}
-                            </h1>
-                        </div>
-                    @endif
                     <div class="section-body">
                         @yield('section_body')
                     </div>

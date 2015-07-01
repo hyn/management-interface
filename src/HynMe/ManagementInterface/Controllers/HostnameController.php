@@ -2,6 +2,7 @@
 
 use HynMe\Framework\Controllers\AbstractController;
 use Config, Input;
+use HynMe\ManagementInterface\Form\Generator;
 use HynMe\MultiTenant\Contracts\HostnameRepositoryContract;
 use HynMe\MultiTenant\Validators\HostnameValidator;
 use Illuminate\Http\Request;
@@ -28,8 +29,6 @@ class HostnameController extends AbstractController
         $this->request = $request;
 
         $this->hostname = $hostname;
-
-        $this->view_namespace = Config::get('management-interface.views-namespace');
     }
 
     /**
@@ -39,7 +38,12 @@ class HostnameController extends AbstractController
      */
     public function delete($hostname, $name)
     {
-        return $this->showConfirmMessage($this->request, $hostname, redirect()->route('management-interface@website@read', $hostname->website->present()->urlArguments));
+        $form = new Generator($hostname, new HostnameValidator, [
+            'redirect' => redirect()->route('management-interface@website@read', $hostname->website->present()->urlArguments),
+            'method' => 'delete'
+        ]);
+
+        return $this->showConfirmMessage($hostname, $form);
     }
 
     /**
@@ -51,7 +55,7 @@ class HostnameController extends AbstractController
     {
         $this->setViewVariable('hostname', $hostname);
         $this->setViewVariable('section_title', $name);
-        return view("{$this->view_namespace}::hostname.read");
+        return view("management-interface::hostname.read");
     }
 
     /**
@@ -61,17 +65,16 @@ class HostnameController extends AbstractController
      */
     public function update($hostname, $name)
     {
+        $form = new Generator($hostname, new HostnameValidator, [
+            'redirect' => redirect()->route('management-interface@website@read', $hostname->website->present()->urlArguments)
+        ]);
+
         return $this->catchFormRequest(function() use ($hostname, $name)
         {
             $this->setViewVariable('hostname', $hostname);
             $this->setViewVariable('section_title', $name);
-            return view("{$this->view_namespace}::hostname.update");
-        },
-            $this->request,
-            $hostname,
-            new HostnameValidator(),
-            redirect()->route('management-interface@website@read', $hostname->website->present()->urlArguments)
-        );
+            return view("management-interface::hostname.update");
+        }, $form);
     }
 
     /**

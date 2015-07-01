@@ -1,11 +1,8 @@
 <?php namespace HynMe\ManagementInterface\Controllers;
 
-
-use Config;
-use HynMe\Webserver\Generators\Webserver\Nginx;
+use HynMe\ManagementInterface\Form\Generator;
 use Illuminate\Http\Request;
 use Response;
-
 use HynMe\Framework\Controllers\AbstractController;
 use HynMe\MultiTenant\Contracts\HostnameRepositoryContract;
 use HynMe\MultiTenant\Validators\HostnameValidator;
@@ -52,15 +49,14 @@ class WebsiteController extends AbstractController
         $this->setViewVariable('section_title', trans_choice('management-interface::website.website',2));
 
 
+        $form = new Generator($this->website->newInstance('website'), new WebsiteValidator, [
+            'redirect' => redirect()->route('management-interface@website@index')
+        ]);
+
         return $this->catchFormRequest(function() {
             $this->setViewVariable('websites', $this->website->paginated());
             return view("{$this->view_namespace}::website.index");
-        },
-            $this->request,
-            $this->website->newInstance('website'),
-            new WebsiteValidator,
-            redirect()->route('management-interface@website@index')
-        );
+        }, $form);
     }
 
     /**
@@ -70,7 +66,12 @@ class WebsiteController extends AbstractController
      */
     public function delete($website, $identifier)
     {
-        return $this->showConfirmMessage($this->request, $website, redirect()->route('management-interface@website@index'));
+        $form = new Generator($website, new WebsiteValidator, [
+            'redirect' => redirect()->route('management-interface@website@index'),
+            'method' => 'delete'
+        ]);
+
+        return $this->showConfirmMessage($website, $form);
     }
 
     /**
@@ -84,18 +85,17 @@ class WebsiteController extends AbstractController
         $hostname->tenant_id = $website->tenant_id;
         $hostname->website_id = $website->id;
 
+        $form = new Generator($hostname, new HostnameValidator, [
+            'redirect' => redirect()->route('management-interface@website@read', $website->present()->urlArguments)
+        ]);
+
         return $this->catchFormRequest(function() use ($website, $identifier) {
 
             $this->setViewVariable('website', $website);
             $this->setViewVariable('section_title', $identifier);
             return view("{$this->view_namespace}::website.read");
 
-        },
-            $this->request,
-            $hostname,
-            new HostnameValidator,
-            redirect()->route('management-interface@website@read', $website->present()->urlArguments)
-        );
+        }, $form);
     }
 
     /**
@@ -106,17 +106,16 @@ class WebsiteController extends AbstractController
      */
     public function update($website, $identifier)
     {
+        $form = new Generator($website, new WebsiteValidator, [
+            'redirect' => redirect()->route('management-interface@website@read', $website->present()->urlArguments)
+        ]);
+
         return $this->catchFormRequest(function() use ($website, $identifier)
         {
             $this->setViewVariable('website', $website);
             $this->setViewVariable('section_title', $identifier);
             return view("{$this->view_namespace}::website.update");
-        },
-            $this->request,
-            $website,
-            new WebsiteValidator,
-            redirect()->route('management-interface@website@read', $website->present()->urlArguments)
-        );
+        }, $form);
     }
 
     /**

@@ -39,7 +39,6 @@ class ManagementInterfaceServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
 	}
 
 	/**
