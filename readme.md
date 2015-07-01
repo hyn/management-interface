@@ -108,3 +108,10 @@ Route::group(['prefix' => 'management', 'namespace'=>'HynMe\ManagementInterface\
     ]);
 });
 ```
+
+__Note:__ the global `app/Http/routes.php` is included by the `RoutesServiceProvider` and will append the namespace `App\Http\Controllers` to any defined route group or controller routes.
+In order to make the management interface still work globally, use the following group definition:
+
+```php
+Route::group(['prefix' => 'management', 'namespace'=>'\HynMe\ManagementInterface\Controllers'], function()
+```
