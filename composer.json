@@ -10,7 +10,7 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/hyn-me/management-interface/issues",
+        "issues": "https://github.com/hyn-me/multi-tenant/issues",
         "source": "https://github.com/hyn-me/management-interface",
         "docs": "http://hyn.me"
     },
