@@ -61,9 +61,14 @@ class SslController extends AbstractController
      * @param string                            $identifier
      * @return \View
      */
-    public function delete($ssl, $identifier)
+    public function delete($ssl)
     {
-        return $this->showConfirmMessage($this->request, $ssl, redirect()->route('management-interface@ssl@index'));
+        $form = new Generator($ssl, new SslValidator, [
+            'redirect' => redirect()->route('management-interface@ssl@index'),
+            'method' => 'delete'
+        ]);
+
+        return $this->showConfirmMessage($ssl, $form);
     }
 
     /**
