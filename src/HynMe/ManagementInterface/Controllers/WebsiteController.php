@@ -26,8 +26,9 @@ class WebsiteController extends AbstractController
     protected $request;
 
     /**
-     * @param WebsiteRepositoryContract $website
-     * @param Request                   $request
+     * @param WebsiteRepositoryContract  $website
+     * @param HostnameRepositoryContract $hostname
+     * @param Request                    $request
      */
     public function __construct(WebsiteRepositoryContract $website, HostnameRepositoryContract $hostname, Request $request)
     {
