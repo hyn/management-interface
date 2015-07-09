@@ -1,11 +1,11 @@
 {
-    "name": "league/:package_name",
+    "name": "lara-league/:package_name",
     "description": ":package_description",
     "keywords": [
         "league",
         ":package_name"
     ],
-    "homepage": "https://github.com/thephpleague/:package_name",
+    "homepage": "https://github.com/lara-league/:package_name",
     "license": "MIT",
     "authors": [
         {
