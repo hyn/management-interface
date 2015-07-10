@@ -84,7 +84,7 @@ class PackageServiceProvider extends ServiceProvider
 
     /**
      * Register the package database seeds
-     * 
+     *
      * @return void
      */
     protected function registerSeeds()
