@@ -32,7 +32,9 @@ class PackageServiceProvider extends ServiceProvider
         $this->registerTranslations();
         $this->registerConfigurations();
 
-        $this->registerRoutes();
+        if(! $this->app->routesAreCached()) {
+            $this->registerRoutes();
+        }
     }
 
     /**
