@@ -7,13 +7,25 @@ use Illuminate\Support\ServiceProvider;
 
 /**
  * Class PackageServiceProvider
+ *
  * @package LaraLeague\Package
+ * @see http://laravel.com/docs/5.1/packages#service-providers
+ * @see http://laravel.com/docs/5.1/providers
  */
 class PackageServiceProvider extends ServiceProvider
 {
     /**
+     * Indicates if loading of the provider is deferred.
+     *
+     * @see http://laravel.com/docs/5.1/providers#deferred-providers
+     * @var bool
+     */
+    protected $defer = false;
+
+    /**
      * Register the service provider.
      *
+     * @see http://laravel.com/docs/5.1/providers#the-register-method
      * @return void
      */
     public function register()
@@ -22,6 +34,9 @@ class PackageServiceProvider extends ServiceProvider
 
     /**
      * Application is booting
+     *
+     * @see http://laravel.com/docs/5.1/providers#the-boot-method
+     * @return void
      */
     public function boot()
     {
@@ -39,6 +54,9 @@ class PackageServiceProvider extends ServiceProvider
 
     /**
      * Register the package views
+     *
+     * @see http://laravel.com/docs/5.1/packages#views
+     * @return void
      */
     protected function registerViews()
     {
@@ -52,6 +70,9 @@ class PackageServiceProvider extends ServiceProvider
 
     /**
      * Register the package migrations
+     *
+     * @see http://laravel.com/docs/5.1/packages#publishing-file-groups
+     * @return void
      */
     protected function registerMigrations()
     {
@@ -62,6 +83,9 @@ class PackageServiceProvider extends ServiceProvider
 
     /**
      * Register the package public assets
+     *
+     * @see http://laravel.com/docs/5.1/packages#public-assets
+     * @return void
      */
     protected function registerAssets()
     {
@@ -72,6 +96,9 @@ class PackageServiceProvider extends ServiceProvider
 
     /**
      * Register the package translations
+     *
+     * @see http://laravel.com/docs/5.1/packages#translations
+     * @return void
      */
     protected function registerTranslations()
     {
@@ -80,6 +107,9 @@ class PackageServiceProvider extends ServiceProvider
 
     /**
      * Register the package configurations
+     *
+     * @see http://laravel.com/docs/5.1/packages#configuration
+     * @return void
      */
     protected function registerConfigurations()
     {
@@ -96,6 +126,8 @@ class PackageServiceProvider extends ServiceProvider
      *
      * @info use groups, specific routes
      * @see http://laravel.com/docs/5.1/routing
+     * @see http://laravel.com/docs/5.1/packages#routing
+     * @return void
      */
     protected function registerRoutes()
     {
