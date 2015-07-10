@@ -1,4 +1,0 @@
-<?php
-/**
- * Register your routes
- */
