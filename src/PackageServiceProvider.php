@@ -1,17 +1,17 @@
 <?php
 
-namespace LaraLeague\Package;
+namespace LaraLeague\:PackageName;
 
 use Illuminate\Support\ServiceProvider;
 
 /**
  * Class PackageServiceProvider
  *
- * @package LaraLeague\Package
+ * @package LaraLeague\:PackageName
  * @see http://laravel.com/docs/5.1/packages#service-providers
  * @see http://laravel.com/docs/5.1/providers
  */
-class PackageServiceProvider extends ServiceProvider
+class :PackageNameServiceProvider extends ServiceProvider
 {
     /**
      * Indicates if loading of the provider is deferred.
@@ -47,7 +47,7 @@ class PackageServiceProvider extends ServiceProvider
         $this->registerTranslations();
         $this->registerConfigurations();
 
-        if(! $this->app->routesAreCached() && config('package.routes')) {
+        if(! $this->app->routesAreCached() && config(':package_name.routes')) {
             $this->registerRoutes();
         }
     }
@@ -61,10 +61,10 @@ class PackageServiceProvider extends ServiceProvider
     protected function registerViews()
     {
         // register views within the application with the set namespace
-        $this->loadViewsFrom($this->packagePath('resources/views'), 'package');
+        $this->loadViewsFrom($this->packagePath('resources/views'), ':package_name');
         // allow views to be published to the storage directory
         $this->publishes([
-            $this->packagePath('resources/views') => base_path('resources/views/lara-league/package'),
+            $this->packagePath('resources/views') => base_path('resources/views/lara-league/:package_name'),
         ], 'views');
     }
 
@@ -102,7 +102,7 @@ class PackageServiceProvider extends ServiceProvider
     protected function registerAssets()
     {
         $this->publishes([
-            $this->packagePath('resources/assets') => public_path('lara-league/package'),
+            $this->packagePath('resources/assets') => public_path('lara-league/:package_name'),
         ], 'public');
     }
 
@@ -114,7 +114,7 @@ class PackageServiceProvider extends ServiceProvider
      */
     protected function registerTranslations()
     {
-        $this->loadTranslationsFrom($this->packagePath('resources/lang'), 'package');
+        $this->loadTranslationsFrom($this->packagePath('resources/lang'), ':package_name');
     }
 
     /**
@@ -126,10 +126,10 @@ class PackageServiceProvider extends ServiceProvider
     protected function registerConfigurations()
     {
         $this->mergeConfigFrom(
-            $this->packagePath('config/config.php'), 'package'
+            $this->packagePath('config/config.php'), ':package_name'
         );
         $this->publishes([
-            $this->packagePath('config/config.php') => config_path('package.php'),
+            $this->packagePath('config/config.php') => config_path(':package_name.php'),
         ], 'config');
     }
 
@@ -147,9 +147,9 @@ class PackageServiceProvider extends ServiceProvider
             'namespace' => __NAMESPACE__
         ], function() {
             // index action showing the packages
-            $this->app['router']->any('/package', [
-                'as'   => 'package:index',
-                'uses' => 'Controllers\PackageController@index'
+            $this->app['router']->any('/:package_name', [
+                'as'   => ':package_name:index',
+                'uses' => 'Controllers\:PackageNameController@index'
             ]);
 
         });
