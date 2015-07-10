@@ -43,6 +43,7 @@ class PackageServiceProvider extends ServiceProvider
 
         $this->registerViews();
         $this->registerMigrations();
+        $this->registerSeeds();
         $this->registerAssets();
         $this->registerTranslations();
         $this->registerConfigurations();
@@ -79,6 +80,18 @@ class PackageServiceProvider extends ServiceProvider
         $this->publishes([
             $this->packagePath('database/migrations') => database_path('/migrations')
         ], 'migrations');
+    }
+
+    /**
+     * Register the package database seeds
+     * 
+     * @return void
+     */
+    protected function registerSeeds()
+    {
+        $this->publishes([
+            $this->packagePath('database/seeds') => database_path('/seeds')
+        ], 'seeds');
     }
 
     /**
