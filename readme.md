@@ -87,6 +87,10 @@ Route::group(['prefix' => 'management', 'namespace'=>'HynMe\ManagementInterface\
      * Tenant specific routes
      * @uses HynMe\ManagementInterface\Controllers\TenantController
      */
+    Route::any('tenants', [
+        'as' => 'management-interface@tenant@index',
+        'uses' => 'TenantController@index'
+    ]);
     Route::post('ajax/tenants', [
         'as' => 'management-interface@tenant@ajax',
         'uses' => 'TenantController@ajax'
