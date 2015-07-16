@@ -4,10 +4,10 @@ use HynMe\ManagementInterface\Form\Generator;
 use Illuminate\Http\Request;
 use Response;
 use HynMe\Framework\Controllers\AbstractController;
-use HynMe\MultiTenant\Contracts\HostnameRepositoryContract;
-use HynMe\MultiTenant\Validators\HostnameValidator;
-use HynMe\MultiTenant\Contracts\WebsiteRepositoryContract;
-use HynMe\MultiTenant\Validators\WebsiteValidator;
+use LaraLeague\MultiTenant\Contracts\HostnameRepositoryContract;
+use LaraLeague\MultiTenant\Validators\HostnameValidator;
+use LaraLeague\MultiTenant\Contracts\WebsiteRepositoryContract;
+use LaraLeague\MultiTenant\Validators\WebsiteValidator;
 
 class WebsiteController extends AbstractController
 {
@@ -61,7 +61,7 @@ class WebsiteController extends AbstractController
     }
 
     /**
-     * @param \HynMe\MultiTenant\Models\Website $website
+     * @param \LaraLeague\MultiTenant\Models\Website $website
      * @param string                            $identifier
      * @return \View
      */
@@ -76,7 +76,7 @@ class WebsiteController extends AbstractController
     }
 
     /**
-     * @param \HynMe\MultiTenant\Models\Website $website
+     * @param \LaraLeague\MultiTenant\Models\Website $website
      * @param string                            $identifier
      * @return \View
      */

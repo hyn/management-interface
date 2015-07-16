@@ -20,8 +20,7 @@
         "hyn-me/framework": "*"
     },
     "suggest": {
-      "hyn-me/multi-tenant": "dev-master",
-      "hyn-me/webserver": "dev-master"
+      "lara-league/multi-tenant": "dev-master"
     },
     "autoload": {
         "psr-0": {

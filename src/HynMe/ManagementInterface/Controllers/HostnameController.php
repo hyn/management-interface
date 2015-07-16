@@ -3,8 +3,8 @@
 use HynMe\Framework\Controllers\AbstractController;
 use Config, Input;
 use HynMe\ManagementInterface\Form\Generator;
-use HynMe\MultiTenant\Contracts\HostnameRepositoryContract;
-use HynMe\MultiTenant\Validators\HostnameValidator;
+use LaraLeague\MultiTenant\Contracts\HostnameRepositoryContract;
+use LaraLeague\MultiTenant\Validators\HostnameValidator;
 use Illuminate\Http\Request;
 use Response;
 
@@ -32,7 +32,7 @@ class HostnameController extends AbstractController
     }
 
     /**
-     * @param \HynMe\MultiTenant\Models\Hostname $hostname
+     * @param \LaraLeague\MultiTenant\Models\Hostname $hostname
      * @param string                            $name
      * @return \View
      */
@@ -47,7 +47,7 @@ class HostnameController extends AbstractController
     }
 
     /**
-     * @param \HynMe\MultiTenant\Models\Hostname $hostname
+     * @param \LaraLeague\MultiTenant\Models\Hostname $hostname
      * @param string                            $name
      * @return \View
      */

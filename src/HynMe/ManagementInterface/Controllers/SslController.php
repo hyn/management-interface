@@ -7,7 +7,7 @@ use HynMe\Webserver\Contracts\SslRepositoryContract;
 use Illuminate\Http\Request;
 
 use HynMe\Framework\Controllers\AbstractController;
-use HynMe\MultiTenant\Contracts\HostnameRepositoryContract;
+use LaraLeague\MultiTenant\Contracts\HostnameRepositoryContract;
 use HynMe\Webserver\Validators\SslValidator;
 
 class SslController extends AbstractController
@@ -57,7 +57,7 @@ class SslController extends AbstractController
     }
 
     /**
-     * @param \HynMe\MultiTenant\Models\Website $website
+     * @param \LaraLeague\MultiTenant\Models\Website $website
      * @param string                            $identifier
      * @return \View
      */
@@ -72,7 +72,7 @@ class SslController extends AbstractController
     }
 
     /**
-     * @param \HynMe\MultiTenant\Models\Website $website
+     * @param \LaraLeague\MultiTenant\Models\Website $website
      * @param string                            $identifier
      * @return \View
      */

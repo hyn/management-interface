@@ -3,9 +3,9 @@
 use HynMe\Framework\Controllers\AbstractController;
 use Config, Response;
 use Illuminate\Http\Request;
-use HynMe\MultiTenant\Contracts\TenantRepositoryContract;
+use LaraLeague\MultiTenant\Contracts\TenantRepositoryContract;
 use HynMe\ManagementInterface\Form\Generator;
-use HynMe\MultiTenant\Validators\TenantValidator;
+use LaraLeague\MultiTenant\Validators\TenantValidator;
 
 class TenantController extends AbstractController
 {
