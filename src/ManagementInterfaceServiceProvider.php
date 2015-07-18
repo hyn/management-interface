@@ -119,7 +119,7 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
             /*
              * Website model binding
              */
-            $this->app['router']->model('website', 'HynMe\MultiTenant\Models\Website');
+            $this->app['router']->model('website', 'LaraLeague\MultiTenant\Models\Website');
             /*
              * Website specific routes
              * @uses HynMe\ManagementInterface\Controllers\WebsiteController
@@ -132,11 +132,23 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
                 'as' => 'website.read',
                 'uses' => 'WebsiteController@read'
             ]);
+            $this->app['router']->get('website/create', [
+                'as' => 'website.create',
+                'uses' => 'WebsiteController@create'
+            ]);
+            $this->app['router']->post('website/create', [
+                'as' => 'website.store',
+                'uses' => 'WebsiteController@store'
+            ]);
             $this->app['router']->any('website/{website}/{name}/delete', [
                 'as' => 'website.delete',
                 'uses' => 'WebsiteController@delete'
             ]);
-            $this->app['router']->any('website/{website}/{name}/update', [
+            $this->app['router']->get('website/{website}/{name}/update', [
+                'as' => 'website.edit',
+                'uses' => 'WebsiteController@edit'
+            ]);
+            $this->app['router']->post('website/{website}/{name}/update', [
                 'as' => 'website.update',
                 'uses' => 'WebsiteController@update'
             ]);
@@ -151,7 +163,7 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
             /*
              * Hostname model binding
              */
-            $this->app['router']->model('hostname', 'HynMe\MultiTenant\Models\Hostname');
+            $this->app['router']->model('hostname', 'LaraLeague\MultiTenant\Models\Hostname');
             /*
              * Hostname specific routes
              * @uses HynMe\ManagementInterface\Controllers\HostnameController
@@ -169,9 +181,9 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
                 'uses' => 'HostnameController@ajax'
             ]);
             /*
-             * Hostname model binding
+             * Tenant model binding
              */
-            $this->app['router']->model('tenant', 'HynMe\MultiTenant\Models\Tenant');
+            $this->app['router']->model('tenant', 'LaraLeague\MultiTenant\Models\Tenant');
             /*
              * Tenant specific routes
              * @uses HynMe\ManagementInterface\Controllers\TenantController
@@ -179,6 +191,14 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
             $this->app['router']->any('tenants', [
                 'as' => 'tenant.index',
                 'uses' => 'TenantController@index'
+            ]);
+            $this->app['router']->get('tenant/create', [
+                'as' => 'tenant.create',
+                'uses' => 'TenantController@create'
+            ]);
+            $this->app['router']->post('tenant/create', [
+                'as' => 'tenant.store',
+                'uses' => 'TenantController@store'
             ]);
             $this->app['router']->post('ajax/tenants', [
                 'as' => 'tenant.ajax',

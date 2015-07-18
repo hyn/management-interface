@@ -2,6 +2,7 @@
 return [
     'website' => 'website|websites',
     'all-websites' => 'all websites',
+    'create-website' => 'add new website',
 
     /*
      * Attributes
