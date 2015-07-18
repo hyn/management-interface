@@ -13,19 +13,17 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>{{ trans_choice('management-interface::website.website', 1) }}</th>
-                    <th>{{ trans_choice('management-interface::hostname.hostname', 2) }}</th>
+                    <th>{{ trans_choice('management-interface::tenant.tenant', 1) }}</th>
                     <th class="datatable-nosort">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($websites as $website)
+                @foreach($tenants as $tenant)
                     <tr class="">
                         <td class="text-center col-xs-1">
-                            <a href="#">{{ $website->id }}</a>
+                            <a href="#">{{ $tenant->id }}</a>
                         </td>
-                        <td>{{ $website->present()->name }}</td>
-                        <td>{{ $website->present()->hostnamesSummary }}</td>
+                        <td>{{ $tenant->present()->name }}</td>
                         <td class="text-center col-xs-1">
                             {{--{!! BootForm::open()->delete()->action(route('permissions.delete', ['id' => $permission->id])) !!}--}}
                             {{--<a href="{{ route('permissions.edit', ['id' => $permission->id]) }}" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil"></i></a>--}}

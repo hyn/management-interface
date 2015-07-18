@@ -42,9 +42,6 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerViews();
-        $this->registerMigrations();
-        $this->registerSeeds();
-        $this->registerAssets();
         $this->registerTranslations();
         $this->registerConfigurations();
 
@@ -70,44 +67,6 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register the package migrations
-     *
-     * @see http://laravel.com/docs/5.1/packages#publishing-file-groups
-     * @return void
-     */
-    protected function registerMigrations()
-    {
-//        $this->publishes([
-//            $this->packagePath('database/migrations') => database_path('/migrations')
-//        ], 'migrations');
-    }
-
-    /**
-     * Register the package database seeds
-     *
-     * @return void
-     */
-    protected function registerSeeds()
-    {
-//        $this->publishes([
-//            $this->packagePath('database/seeds') => database_path('/seeds')
-//        ], 'seeds');
-    }
-
-    /**
-     * Register the package public assets
-     *
-     * @see http://laravel.com/docs/5.1/packages#public-assets
-     * @return void
-     */
-    protected function registerAssets()
-    {
-//        $this->publishes([
-//            $this->packagePath('resources/assets') => public_path('hyn-me/management-interface'),
-//        ], 'public');
-    }
-
-    /**
      * Register the package translations
      *
      * @see http://laravel.com/docs/5.1/packages#translations
@@ -126,12 +85,12 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
      */
     protected function registerConfigurations()
     {
-//        $this->mergeConfigFrom(
-//            $this->packagePath('config/config.php'), 'management-interface'
-//        );
-//        $this->publishes([
-//            $this->packagePath('config/config.php') => config_path('management-interface.php'),
-//        ], 'config');
+        $this->mergeConfigFrom(
+            $this->packagePath('config/config.php'), 'management-interface'
+        );
+        $this->publishes([
+            $this->packagePath('config/config.php') => config_path('management-interface.php'),
+        ], 'config');
     }
 
     /**
@@ -144,16 +103,112 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
      */
     protected function registerRoutes()
     {
-//        $this->app['router']->group([
-//            'namespace' => __NAMESPACE__
-//        ], function() {
-//            // index action showing the packages
-//            $this->app['router']->any('/management-interface', [
-//                'as'   => 'management-interface:index',
-//                'uses' => 'Controllers\:PackageNameController@index'
-//            ]);
-//
-//        });
+        $this->app['router']->group([
+            'prefix' => 'management',
+            'namespace'=>'HynMe\ManagementInterface\Http\Controllers',
+            'as' => 'management-interface.'
+        ], function() {
+            /*
+             * Dashboard specific routes
+             * @uses HynMe\ManagementInterface\Controllers\DashboardController
+             */
+            $this->app['router']->any('dashboard', [
+                'as' => 'dashboard.index',
+                'uses' => 'DashboardController@index'
+            ]);
+            /*
+             * Website model binding
+             */
+            $this->app['router']->model('website', 'HynMe\MultiTenant\Models\Website');
+            /*
+             * Website specific routes
+             * @uses HynMe\ManagementInterface\Controllers\WebsiteController
+             */
+            $this->app['router']->any('websites', [
+                'as' => 'website.index',
+                'uses' => 'WebsiteController@index'
+            ]);
+            $this->app['router']->any('website/{website}/{name}', [
+                'as' => 'website.read',
+                'uses' => 'WebsiteController@read'
+            ]);
+            $this->app['router']->any('website/{website}/{name}/delete', [
+                'as' => 'website.delete',
+                'uses' => 'WebsiteController@delete'
+            ]);
+            $this->app['router']->any('website/{website}/{name}/update', [
+                'as' => 'website.update',
+                'uses' => 'WebsiteController@update'
+            ]);
+            $this->app['router']->post('ajax/websites', [
+                'as' => 'website.ajax',
+                'uses' => 'WebsiteController@ajax'
+            ]);
+            $this->app['router']->any('website/{website}/{name}/save-configurations',[
+                'as' => 'website.save-configurations',
+                'uses' => 'WebsiteController@saveConfigurations'
+            ]);
+            /*
+             * Hostname model binding
+             */
+            $this->app['router']->model('hostname', 'HynMe\MultiTenant\Models\Hostname');
+            /*
+             * Hostname specific routes
+             * @uses HynMe\ManagementInterface\Controllers\HostnameController
+             */
+            $this->app['router']->any('hostname/{hostname}/{name}/delete', [
+                'as' => 'hostname.delete',
+                'uses' => 'HostnameController@delete'
+            ]);
+            $this->app['router']->any('hostname/{hostname}/{name}/update', [
+                'as' => 'hostname.update',
+                'uses' => 'HostnameController@update'
+            ]);
+            $this->app['router']->post('ajax/hostnames', [
+                'as' => 'hostname.ajax',
+                'uses' => 'HostnameController@ajax'
+            ]);
+            /*
+             * Hostname model binding
+             */
+            $this->app['router']->model('tenant', 'HynMe\MultiTenant\Models\Tenant');
+            /*
+             * Tenant specific routes
+             * @uses HynMe\ManagementInterface\Controllers\TenantController
+             */
+            $this->app['router']->any('tenants', [
+                'as' => 'tenant.index',
+                'uses' => 'TenantController@index'
+            ]);
+            $this->app['router']->post('ajax/tenants', [
+                'as' => 'tenant.ajax',
+                'uses' => 'TenantController@ajax'
+            ]);
+
+            /*
+             * Ssl model binding
+             * @requires hyn-me/webserver
+             */
+            $this->app['router']->model('ssl', 'HynMe\Webserver\Models\SslCertificate');
+            /*
+             * Ssl specific routes
+             * @uses HynMe\ManagementInterface\Controllers\SslController
+             * @requires hyn-me/webserver
+             */
+            $this->app['router']->any('ssl', [
+                'as' => 'ssl.index',
+                'uses' => 'SslController@index'
+            ]);
+            $this->app['router']->any('ssl/{ssl}', [
+                'as' => 'ssl.read',
+                'uses' => 'SslController@read'
+            ]);
+            $this->app['router']->any('ssl/{ssl}/delete', [
+                'as' => 'ssl.delete',
+                'uses' => 'SslController@delete'
+            ]);
+
+        });
     }
 
     /**
