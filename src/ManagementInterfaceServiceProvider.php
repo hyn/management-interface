@@ -1,8 +1,9 @@
 <?php
 
-namespace LaraLeague\:PackageName;
+namespace HynMe\ManagementInterface;
 
 use Illuminate\Support\ServiceProvider;
+use Odotmedia\Dashboard\Providers\DashboardServiceProvider;
 
 /**
  * Class PackageServiceProvider
@@ -11,7 +12,7 @@ use Illuminate\Support\ServiceProvider;
  * @see http://laravel.com/docs/5.1/packages#service-providers
  * @see http://laravel.com/docs/5.1/providers
  */
-class :PackageNameServiceProvider extends ServiceProvider
+class ManagementInterfaceServiceProvider extends ServiceProvider
 {
     /**
      * Indicates if loading of the provider is deferred.
@@ -29,6 +30,7 @@ class :PackageNameServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->register(DashboardServiceProvider::class);
     }
 
     /**
@@ -39,7 +41,6 @@ class :PackageNameServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
         $this->registerViews();
         $this->registerMigrations();
         $this->registerSeeds();
@@ -47,7 +48,7 @@ class :PackageNameServiceProvider extends ServiceProvider
         $this->registerTranslations();
         $this->registerConfigurations();
 
-        if(! $this->app->routesAreCached() && config(':package_name.routes')) {
+        if(! $this->app->routesAreCached() && config('management-interface.routes')) {
             $this->registerRoutes();
         }
     }
@@ -61,10 +62,10 @@ class :PackageNameServiceProvider extends ServiceProvider
     protected function registerViews()
     {
         // register views within the application with the set namespace
-        $this->loadViewsFrom($this->packagePath('resources/views'), ':package_name');
+        $this->loadViewsFrom($this->packagePath('resources/views'), 'management-interface');
         // allow views to be published to the storage directory
         $this->publishes([
-            $this->packagePath('resources/views') => base_path('resources/views/lara-league/:package_name'),
+            $this->packagePath('resources/views') => base_path('resources/views/hyn-me/management-interface'),
         ], 'views');
     }
 
@@ -76,9 +77,9 @@ class :PackageNameServiceProvider extends ServiceProvider
      */
     protected function registerMigrations()
     {
-        $this->publishes([
-            $this->packagePath('database/migrations') => database_path('/migrations')
-        ], 'migrations');
+//        $this->publishes([
+//            $this->packagePath('database/migrations') => database_path('/migrations')
+//        ], 'migrations');
     }
 
     /**
@@ -88,9 +89,9 @@ class :PackageNameServiceProvider extends ServiceProvider
      */
     protected function registerSeeds()
     {
-        $this->publishes([
-            $this->packagePath('database/seeds') => database_path('/seeds')
-        ], 'seeds');
+//        $this->publishes([
+//            $this->packagePath('database/seeds') => database_path('/seeds')
+//        ], 'seeds');
     }
 
     /**
@@ -101,9 +102,9 @@ class :PackageNameServiceProvider extends ServiceProvider
      */
     protected function registerAssets()
     {
-        $this->publishes([
-            $this->packagePath('resources/assets') => public_path('lara-league/:package_name'),
-        ], 'public');
+//        $this->publishes([
+//            $this->packagePath('resources/assets') => public_path('hyn-me/management-interface'),
+//        ], 'public');
     }
 
     /**
@@ -114,7 +115,7 @@ class :PackageNameServiceProvider extends ServiceProvider
      */
     protected function registerTranslations()
     {
-        $this->loadTranslationsFrom($this->packagePath('resources/lang'), ':package_name');
+        $this->loadTranslationsFrom($this->packagePath('resources/lang'), 'management-interface');
     }
 
     /**
@@ -125,12 +126,12 @@ class :PackageNameServiceProvider extends ServiceProvider
      */
     protected function registerConfigurations()
     {
-        $this->mergeConfigFrom(
-            $this->packagePath('config/config.php'), ':package_name'
-        );
-        $this->publishes([
-            $this->packagePath('config/config.php') => config_path(':package_name.php'),
-        ], 'config');
+//        $this->mergeConfigFrom(
+//            $this->packagePath('config/config.php'), 'management-interface'
+//        );
+//        $this->publishes([
+//            $this->packagePath('config/config.php') => config_path('management-interface.php'),
+//        ], 'config');
     }
 
     /**
@@ -143,16 +144,16 @@ class :PackageNameServiceProvider extends ServiceProvider
      */
     protected function registerRoutes()
     {
-        $this->app['router']->group([
-            'namespace' => __NAMESPACE__
-        ], function() {
-            // index action showing the packages
-            $this->app['router']->any('/:package_name', [
-                'as'   => ':package_name:index',
-                'uses' => 'Controllers\:PackageNameController@index'
-            ]);
-
-        });
+//        $this->app['router']->group([
+//            'namespace' => __NAMESPACE__
+//        ], function() {
+//            // index action showing the packages
+//            $this->app['router']->any('/management-interface', [
+//                'as'   => 'management-interface:index',
+//                'uses' => 'Controllers\:PackageNameController@index'
+//            ]);
+//
+//        });
     }
 
     /**
@@ -163,6 +164,6 @@ class :PackageNameServiceProvider extends ServiceProvider
      */
     protected function packagePath($path = '')
     {
-        return sprintf("%s/%s", __DIR__ . '../', $path);
+        return sprintf("%s/%s", __DIR__ . '/..', $path);
     }
 }

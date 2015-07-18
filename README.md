@@ -1,4 +1,4 @@
-# :package_name
+# management-interface
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
@@ -8,28 +8,19 @@
 [![Total Downloads][ico-downloads]][link-downloads]
 
 
-**NOTE:**
-- Replace ```:author_name``` ```:author_username``` ```:author_website``` ```:author_email``` ```:package_name``` ```:PackageName``` ```:package_description``` with their correct values in [README.md](README.md), [CHANGELOG.md](CHANGELOG.md), [CONTRIBUTING.md](CONTRIBUTING.md), [LICENSE.md](LICENSE.md), [PackageServiceProvider.php](src/PackageServiceProvider.php) and [composer.json](composer.json) files.
-- Rename the file [PackageServiceProvider.php](src/PackageServiceProvider.php) and the Provider class to reflect the :PackageName.
-- Delete the above lines up and including **NOTE:**.
-
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what
-PSRs you support to avoid any confusion with users and contributors.
+A UI to manage [multi tenancy](https://github.com/lara-league/multi-tenant).
 
 ## Install
 
 Via Composer
 
 ``` bash
-$ composer require league/:package_name
+$ composer require hyn-me/management-interface
 ```
 
 ## Usage
 
-``` php
-$skeleton = new League\Skeleton();
-echo $skeleton->echoPhrase('Hello, League!');
-```
+
 
 ## Change log
 
@@ -58,17 +49,17 @@ If you discover any security related issues, please email :author_email instead 
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-[ico-version]: https://img.shields.io/packagist/v/league/:package_name.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/hyn-me/management-interface.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/thephpleague/:package_name/master.svg?style=flat-square
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/thephpleague/:package_name.svg?style=flat-square
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/thephpleague/:package_name.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/league/:package_name.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/hyn-me/management-interface/master.svg?style=flat-square
+[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/hyn-me/management-interface.svg?style=flat-square
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/hyn-me/management-interface.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/hyn-me/management-interface.svg?style=flat-square
 
-[link-packagist]: https://packagist.org/packages/league/:package_name
-[link-travis]: https://travis-ci.org/thephpleague/:package_name
-[link-scrutinizer]: https://scrutinizer-ci.com/g/thephpleague/:package_name/code-structure
-[link-code-quality]: https://scrutinizer-ci.com/g/thephpleague/:package_name
-[link-downloads]: https://packagist.org/packages/league/:package_name
+[link-packagist]: https://packagist.org/packages/hyn-me/management-interface
+[link-travis]: https://travis-ci.org/hyn-me/management-interface
+[link-scrutinizer]: https://scrutinizer-ci.com/g/hyn-me/management-interface/code-structure
+[link-code-quality]: https://scrutinizer-ci.com/g/hyn-me/management-interface
+[link-downloads]: https://packagist.org/packages/hyn-me/management-interface
 [link-author]: https://github.com/:author_username
 [link-contributors]: ../../contributors
