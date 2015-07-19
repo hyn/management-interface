@@ -1,1 +1,1 @@
-<i class="fa fa-user-secret"></i>
+<i class="fa fa-building"></i>

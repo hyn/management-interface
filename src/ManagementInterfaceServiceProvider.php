@@ -104,7 +104,7 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
     protected function registerRoutes()
     {
         $this->app['router']->group([
-            'prefix' => 'management',
+            'prefix' => 'dashboard/multi-tenant',
             'namespace'=>'HynMe\ManagementInterface\Http\Controllers',
             'as' => 'management-interface.'
         ], function() {

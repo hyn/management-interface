@@ -52,7 +52,7 @@ class WebsiteController extends BaseDashboardController
     }
 
     /**
-     *
+     * Updates the website
      *
      * @param \LaraLeague\MultiTenant\Models\Website $website
      * @return $this|bool|\HynMe\Framework\Models\AbstractModel|null
@@ -60,5 +60,16 @@ class WebsiteController extends BaseDashboardController
     public function update($website)
     {
         return (new WebsiteValidator())->catchFormRequest($website, redirect()->route('management-interface.website.index'));
+    }
+
+    /**
+     * Website view
+     *
+     * @param $website
+     * @return array|\Illuminate\View\View
+     */
+    public function read($website)
+    {
+        return view('management-interface::website.view', compact('website'));
     }
 }
