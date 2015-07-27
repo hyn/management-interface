@@ -1,9 +1,9 @@
 {
     "name": "hyn-me/management-interface",
-    "description": "management interface for lara-league/multi-tenant",
+    "description": "management interface for laraflock/multi-tenant",
     "keywords": [
         "hyn-me",
-        "lara-league",
+        "laraflock",
         "management-interface"
     ],
     "homepage": "https://github.com/hyn-me/management-interface",
@@ -41,4 +41,10 @@
             "dev-master": "1.0-dev"
         }
     }
+    "support": {
+        "issues": "https://github.com/laraflock/multi-tenant/issues",
+        "source": "https://github.com/hyn-me/management-interface",
+        "docs": "http://hyn.me"
+    },
+    "minimum-stability": "stable"
 }
