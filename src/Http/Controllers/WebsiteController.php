@@ -2,9 +2,10 @@
 
 namespace HynMe\ManagementInterface\Http\Controllers;
 
-use LaraLeague\MultiTenant\Validators\WebsiteValidator;
-use Odotmedia\Dashboard\Controllers\BaseDashboardController;
-use LaraLeague\MultiTenant\Contracts\WebsiteRepositoryContract;
+use Laraflock\Dashboard\Controllers\BaseDashboardController;
+use Laraflock\MultiTenant\Validators\WebsiteValidator;
+
+use Laraflock\MultiTenant\Contracts\WebsiteRepositoryContract;
 
 class WebsiteController extends BaseDashboardController
 {
@@ -43,7 +44,7 @@ class WebsiteController extends BaseDashboardController
     /**
      * Shows website edit page
      *
-     * @param \LaraLeague\MultiTenant\Models\Website $website
+     * @param \Laraflock\MultiTenant\Models\Website $website
      * @return array|\Illuminate\View\View
      */
     public function edit($website)
@@ -54,7 +55,7 @@ class WebsiteController extends BaseDashboardController
     /**
      * Updates the website
      *
-     * @param \LaraLeague\MultiTenant\Models\Website $website
+     * @param \Laraflock\MultiTenant\Models\Website $website
      * @return $this|bool|\HynMe\Framework\Models\AbstractModel|null
      */
     public function update($website)

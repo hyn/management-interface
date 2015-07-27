@@ -3,9 +3,9 @@
 namespace HynMe\ManagementInterface\Http\Controllers;
 
 use Illuminate\Contracts\Routing\ResponseFactory;
-use LaraLeague\MultiTenant\Validators\TenantValidator;
-use Odotmedia\Dashboard\Controllers\BaseDashboardController;
-use LaraLeague\MultiTenant\Contracts\TenantRepositoryContract;
+use Laraflock\Dashboard\Controllers\BaseDashboardController;
+use Laraflock\MultiTenant\Validators\TenantValidator;
+use Laraflock\MultiTenant\Contracts\TenantRepositoryContract;
 
 class TenantController extends BaseDashboardController
 {

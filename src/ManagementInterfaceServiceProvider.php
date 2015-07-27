@@ -3,7 +3,7 @@
 namespace HynMe\ManagementInterface;
 
 use Illuminate\Support\ServiceProvider;
-use Odotmedia\Dashboard\Providers\DashboardServiceProvider;
+use Laraflock\Dashboard\Providers\DashboardServiceProvider;
 
 /**
  * Class PackageServiceProvider
@@ -48,6 +48,8 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
         if(! $this->app->routesAreCached() && config('management-interface.routes')) {
             $this->registerRoutes();
         }
+
+        $this->registerAsDashboardModule();
     }
 
     /**
@@ -119,7 +121,7 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
             /*
              * Website model binding
              */
-            $this->app['router']->model('website', 'LaraLeague\MultiTenant\Models\Website');
+            $this->app['router']->model('website', 'Laraflock\MultiTenant\Models\Website');
             /*
              * Website specific routes
              * @uses HynMe\ManagementInterface\Controllers\WebsiteController
@@ -163,7 +165,7 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
             /*
              * Hostname model binding
              */
-            $this->app['router']->model('hostname', 'LaraLeague\MultiTenant\Models\Hostname');
+            $this->app['router']->model('hostname', 'Laraflock\MultiTenant\Models\Hostname');
             /*
              * Hostname specific routes
              * @uses HynMe\ManagementInterface\Controllers\HostnameController
@@ -183,7 +185,7 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
             /*
              * Tenant model binding
              */
-            $this->app['router']->model('tenant', 'LaraLeague\MultiTenant\Models\Tenant');
+            $this->app['router']->model('tenant', 'Laraflock\MultiTenant\Models\Tenant');
             /*
              * Tenant specific routes
              * @uses HynMe\ManagementInterface\Controllers\TenantController
@@ -240,5 +242,15 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
     protected function packagePath($path = '')
     {
         return sprintf("%s/%s", __DIR__ . '/..', $path);
+    }
+
+    /**
+     * Registers module as DashboardModule
+     */
+    private function registerAsDashboardModule()
+    {
+        /** @var \Laraflock\Dashboard\Repositories\Module\ModuleRepositoryInterface $moduleRepository */
+        $moduleRepository = $this->app->make('Laraflock\Dashboard\Repositories\Module\ModuleRepositoryInterface');
+        $moduleRepository->register(new DashboardModule);
     }
 }
