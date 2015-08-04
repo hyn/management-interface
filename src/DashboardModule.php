@@ -4,6 +4,8 @@
 namespace HynMe\ManagementInterface;
 
 use Laraflock\Dashboard\Repositories\Module\ModuleInterface;
+use Laraflock\MultiTenant\Models\Tenant;
+use Laraflock\MultiTenant\Models\Website;
 
 class DashboardModule implements ModuleInterface
 {
@@ -53,7 +55,7 @@ class DashboardModule implements ModuleInterface
         return [
             trans_choice('management-interface::website.website',2) => [
                 'href' => null,
-                'icon' => 'management-interface::icon.website',
+                'icon' => (new Website)->present()->icon,
                 'items' => [
                     trans('management-interface::website.all-websites') => [
                         'href' => route('management-interface.website.index'),
@@ -65,7 +67,7 @@ class DashboardModule implements ModuleInterface
             ],
             trans_choice('management-interface::tenant.tenant',2) => [
                 'href' => null,
-                'icon' => 'management-interface::icon.tenant',
+                'icon' => (new Tenant)->present()->icon,
                 'items' => [
                     trans('management-interface::tenant.all-tenants') => [
                         'href' => route('management-interface.tenant.index'),
