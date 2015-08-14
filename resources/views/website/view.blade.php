@@ -32,7 +32,9 @@
                             {{ $hostname->present()->name }}
                         </td>
                         <td class="text-center col-xs-1">
-                            {{--                            {!! BootForm::open()->delete()->action(route('management-interface::website.delete', ['id' => $website->id])) !!}--}}
+                            <a class="btn btn-xs btn-default" href="{{ route('management-interface.hostname.delete', $hostname->present()->urlArguments) }}">
+                                {{ trans('management-interface::action.delete') }}
+                            </a>
 {{--                            <a href="{{ route('management-interface.website.edit', $website->present()->urlArguments) }}" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil"></i></a>--}}
                             {{--                            {!! BootForm::submit('<i class="fa fa-trash"></i><span class="sr-only">Delete</span>')->addClass('btn btn-xs btn-danger')->removeClass('btn-default')->data('toggle', 'tooltip')->data('placement', 'top')->title('Delete') !!}--}}
                             {{--{!! BootForm::close() !!}--}}

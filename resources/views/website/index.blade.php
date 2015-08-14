@@ -26,7 +26,12 @@
                             <a href="#">{{ $website->id }}</a>
                         </td>
                         <td>{{ $website->present()->name }}</td>
-                        <td>{{ $website->present()->hostnamesSummary }}</td>
+                        <td>
+                            {{ $website->present()->hostnamesSummary }}
+                            <a href="{{ route('management-interface.hostname.add', $website->present()->urlArguments) }}" class="btn btn-xs btn-default pull-right" data-toggle="tooltip" data-placement="top" title="{{ trans('management-interface::action.add') }}">
+                                @include('management-interface::icon.hostname')
+                            </a>
+                        </td>
                         <td>{{ $website->tenant->present()->name }}</td>
                         <td class="text-center col-xs-1">
 {{--                            {!! BootForm::open()->delete()->action(route('management-interface::website.delete', ['id' => $website->id])) !!}--}}

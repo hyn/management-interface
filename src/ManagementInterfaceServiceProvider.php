@@ -170,9 +170,17 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
              * Hostname specific routes
              * @uses HynMe\ManagementInterface\Controllers\HostnameController
              */
-            $this->app['router']->any('hostname/{hostname}/{name}/delete', [
+            $this->app['router']->get('website/{website}/{name}/add-hostname', [
+                'as' => 'hostname.add',
+                'uses' => 'HostnameController@add'
+            ]);
+            $this->app['router']->get('hostname/{hostname}/{name}/delete', [
                 'as' => 'hostname.delete',
                 'uses' => 'HostnameController@delete'
+            ]);
+            $this->app['router']->post('hostname/{hostname}/{name}/delete', [
+                'as' => 'hostname.deleted',
+                'uses' => 'HostnameController@deleted'
             ]);
             $this->app['router']->any('hostname/{hostname}/{name}/update', [
                 'as' => 'hostname.update',
