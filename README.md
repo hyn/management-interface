@@ -1,3 +1,6 @@
+
+Until further notice this package is stale!
+
 # management-interface
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
