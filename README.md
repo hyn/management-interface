@@ -8,7 +8,7 @@
 [![Total Downloads][ico-downloads]][link-downloads]
 
 
-A UI to manage [multi tenancy](https://github.com/lara-league/multi-tenant).
+A UI to manage [multi tenancy](https://github.com/laraflock/multi-tenant).
 
 ## Install
 
@@ -42,7 +42,7 @@ If you discover any security related issues, please email :author_email instead 
 
 ## Credits
 
-- [:author_name][link-author]
+- [Daniël "luceos" Klabbers][link-author]
 - [All Contributors][link-contributors]
 
 ## License
@@ -61,5 +61,5 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [link-scrutinizer]: https://scrutinizer-ci.com/g/hyn-me/management-interface/code-structure
 [link-code-quality]: https://scrutinizer-ci.com/g/hyn-me/management-interface
 [link-downloads]: https://packagist.org/packages/hyn-me/management-interface
-[link-author]: https://github.com/:author_username
+[link-author]: https://github.com/luceos
 [link-contributors]: ../../contributors
