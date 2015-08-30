@@ -4,6 +4,7 @@
 namespace HynMe\ManagementInterface;
 
 use Laraflock\Dashboard\Repositories\Module\ModuleInterface;
+use Laraflock\MultiTenant\Models\Hostname;
 use Laraflock\MultiTenant\Models\Tenant;
 use Laraflock\MultiTenant\Models\Website;
 
@@ -53,6 +54,7 @@ class DashboardModule implements ModuleInterface
     public function getMenuItems()
     {
         return [
+            // website menu links
             trans_choice('management-interface::website.website',2) => [
                 'href' => null,
                 'icon' => (new Website)->present()->icon,
@@ -65,6 +67,7 @@ class DashboardModule implements ModuleInterface
                     ]
                 ]
             ],
+            // tenant menu links
             trans_choice('management-interface::tenant.tenant',2) => [
                 'href' => null,
                 'icon' => (new Tenant)->present()->icon,
