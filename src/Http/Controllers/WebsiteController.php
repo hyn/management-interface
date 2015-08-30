@@ -3,16 +3,16 @@
 namespace HynMe\ManagementInterface\Http\Controllers;
 
 use Laraflock\Dashboard\Controllers\BaseDashboardController;
-use Laraflock\MultiTenant\Validators\WebsiteValidator;
-
 use Laraflock\MultiTenant\Contracts\WebsiteRepositoryContract;
+use Laraflock\MultiTenant\Validators\WebsiteValidator;
 
 class WebsiteController extends BaseDashboardController
 {
     /**
-     * Loads the overview of websites
+     * Loads the overview of websites.
      *
      * @param WebsiteRepositoryContract $website
+     *
      * @return $this
      */
     public function index(WebsiteRepositoryContract $website)
@@ -21,7 +21,7 @@ class WebsiteController extends BaseDashboardController
     }
 
     /**
-     * Shows website create page
+     * Shows website create page.
      *
      * @return array|\Illuminate\View\View
      */
@@ -31,9 +31,10 @@ class WebsiteController extends BaseDashboardController
     }
 
     /**
-     * Create the tenant website after submit
+     * Create the tenant website after submit.
      *
      * @param WebsiteRepositoryContract $website
+     *
      * @return $this|bool|\HynMe\Framework\Models\AbstractModel|null
      */
     public function store(WebsiteRepositoryContract $website)
@@ -42,9 +43,10 @@ class WebsiteController extends BaseDashboardController
     }
 
     /**
-     * Shows website edit page
+     * Shows website edit page.
      *
      * @param \Laraflock\MultiTenant\Models\Website $website
+     *
      * @return array|\Illuminate\View\View
      */
     public function edit($website)
@@ -53,9 +55,10 @@ class WebsiteController extends BaseDashboardController
     }
 
     /**
-     * Updates the website
+     * Updates the website.
      *
      * @param \Laraflock\MultiTenant\Models\Website $website
+     *
      * @return $this|bool|\HynMe\Framework\Models\AbstractModel|null
      */
     public function update($website)
@@ -64,9 +67,10 @@ class WebsiteController extends BaseDashboardController
     }
 
     /**
-     * Website view
+     * Website view.
      *
      * @param $website
+     *
      * @return array|\Illuminate\View\View
      */
     public function read($website)

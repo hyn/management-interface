@@ -4,15 +4,16 @@ namespace HynMe\ManagementInterface\Http\Controllers;
 
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Laraflock\Dashboard\Controllers\BaseDashboardController;
-use Laraflock\MultiTenant\Validators\TenantValidator;
 use Laraflock\MultiTenant\Contracts\TenantRepositoryContract;
+use Laraflock\MultiTenant\Validators\TenantValidator;
 
 class TenantController extends BaseDashboardController
 {
     /**
-     * Shows list of tenants
+     * Shows list of tenants.
      *
      * @param TenantRepositoryContract $tenant
+     *
      * @return $this
      */
     public function index(TenantRepositoryContract $tenant)
@@ -21,7 +22,7 @@ class TenantController extends BaseDashboardController
     }
 
     /**
-     * Shows tenant creation page
+     * Shows tenant creation page.
      *
      * @return array|\Illuminate\View\View
      */
@@ -31,9 +32,10 @@ class TenantController extends BaseDashboardController
     }
 
     /**
-     * Creates tenant
+     * Creates tenant.
      *
      * @param TenantRepositoryContract $tenant
+     *
      * @return $this|bool|\HynMe\Framework\Models\AbstractModel|null
      */
     public function store(TenantRepositoryContract $tenant)
@@ -42,10 +44,11 @@ class TenantController extends BaseDashboardController
     }
 
     /**
-     * Loads tenants for select2 fields and such
+     * Loads tenants for select2 fields and such.
      *
      * @param TenantRepositoryContract $tenant
-     * @param ResponseFactory $response
+     * @param ResponseFactory          $response
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function ajax(TenantRepositoryContract $tenant, ResponseFactory $response)
