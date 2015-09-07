@@ -181,6 +181,10 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
                 'as'   => 'hostname.add',
                 'uses' => 'HostnameController@add',
             ]);
+            $this->app['router']->post('website/{website}/{name}/add-hostname', [
+                'as'   => 'hostname.added',
+                'uses' => 'HostnameController@added',
+            ]);
             $this->app['router']->get('hostname/{hostname}/{name}/delete', [
                 'as'   => 'hostname.delete',
                 'uses' => 'HostnameController@delete',

@@ -5,6 +5,7 @@ namespace HynMe\ManagementInterface\Http\Controllers;
 use Laraflock\Dashboard\Controllers\BaseDashboardController;
 use Laraflock\MultiTenant\Contracts\WebsiteRepositoryContract;
 use Laraflock\MultiTenant\Validators\WebsiteValidator;
+use Illuminate\Contracts\Routing\ResponseFactory;
 
 class WebsiteController extends BaseDashboardController
 {
@@ -76,5 +77,15 @@ class WebsiteController extends BaseDashboardController
     public function read($website)
     {
         return view('management-interface::website.view', compact('website'));
+    }
+
+    /**
+     * @param WebsiteRepositoryContract $website
+     * @param ResponseFactory $response
+     * @return \Illuminate\Http\JsonResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function ajax(WebsiteRepositoryContract $website, ResponseFactory $response)
+    {
+        return $response->json($website->ajaxQuery('identifier'));
     }
 }

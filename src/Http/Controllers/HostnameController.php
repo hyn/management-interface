@@ -2,10 +2,12 @@
 
 namespace HynMe\ManagementInterface\Http\Controllers;
 
-use HynMe\MultiTenant\Models\Website;
+use Laraflock\MultiTenant\Contracts\HostnameRepositoryContract;
+use Laraflock\MultiTenant\Models\Website;
 use Laraflock\Dashboard\Controllers\BaseDashboardController;
 use Laraflock\MultiTenant\Models\Hostname;
 use Laraflock\MultiTenant\Validators\HostnameValidator;
+use Illuminate\Routing\ResponseFactory;
 
 class HostnameController extends BaseDashboardController
 {
@@ -37,6 +39,22 @@ class HostnameController extends BaseDashboardController
      * @return array|\Illuminate\View\View|mixed
      */
     public function add(Website $website, $name) {
-        return view('management-interface::hostname.create');
+        return view('management-interface::hostname.create', compact('website'));
+    }
+
+    /**
+     * @param HostnameRepositoryContract $hostname
+     * @param Website $website
+     * @param $name
+     * @return $this|bool|\HynMe\Framework\Models\AbstractModel|null
+     * @throws \Laracasts\Presenter\Exceptions\PresenterException
+     */
+    public function added(HostnameRepositoryContract $hostname, Website $website, $name) {
+        return (new HostnameValidator())->catchFormRequest($hostname->newInstance(), redirect()->route("management-interface.website.read", $website->present()->urlArguments));
+    }
+
+    public function ajax(HostnameRepositoryContract $hostname, ResponseFactory $response)
+    {
+        return $response->json($hostname->ajaxQuery('hostname'));
     }
 }
