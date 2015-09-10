@@ -189,7 +189,7 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
                 'as'   => 'hostname.delete',
                 'uses' => 'HostnameController@delete',
             ]);
-            $this->app['router']->post('hostname/{hostname}/{name}/delete', [
+            $this->app['router']->delete('hostname/{hostname}/{name}/delete', [
                 'as'   => 'hostname.deleted',
                 'uses' => 'HostnameController@deleted',
             ]);
