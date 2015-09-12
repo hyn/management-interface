@@ -1,5 +1,5 @@
 @extends('management-interface::layouts.create')
-@section('title', trans('management-interface::website.add-tenant'))
+@section('title', trans('management-interface::tenant.create-tenant'))
 @section('page-title', trans_choice('management-interface::tenant.tenant',2))
 @section('content')
     <div class="box">

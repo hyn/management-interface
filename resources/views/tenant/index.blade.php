@@ -1,7 +1,7 @@
 @extends($viewNamespace . '::layouts.master')
 @section('title', 'Websites - Dashboard')
-@section('page-title', trans_choice('management-interface::website.website',2))
-@section('page-subtitle', trans('management-interface::website.all-websites'))
+@section('page-title', trans_choice('management-interface::tenant.tenant',2))
+@section('page-subtitle', trans('management-interface::tenant.all-tenants'))
 @section('header-extras')
     {{-- Data Table Styles --}}
     <link href="{{ asset('vendor/laraflock/datatables/dataTables.bootstrap.css') }}" rel="stylesheet" type="text/css"/>

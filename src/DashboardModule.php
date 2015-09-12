@@ -24,7 +24,7 @@ class DashboardModule implements ModuleInterface
      */
     public function getDescription()
     {
-        // TODO: Implement getDescription() method.
+        return 'Unobtrusive multi tenancy for Laravel 5.1 LTS, division between tenant and system of files, routes, vendors, media and database.';
     }
 
     /**
