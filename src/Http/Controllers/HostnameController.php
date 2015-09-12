@@ -2,12 +2,12 @@
 
 namespace HynMe\ManagementInterface\Http\Controllers;
 
-use Laraflock\MultiTenant\Contracts\HostnameRepositoryContract;
-use Laraflock\MultiTenant\Models\Website;
-use Laraflock\Dashboard\Controllers\BaseDashboardController;
-use Laraflock\MultiTenant\Models\Hostname;
-use Laraflock\MultiTenant\Validators\HostnameValidator;
 use Illuminate\Routing\ResponseFactory;
+use Laraflock\Dashboard\Controllers\BaseDashboardController;
+use Laraflock\MultiTenant\Contracts\HostnameRepositoryContract;
+use Laraflock\MultiTenant\Models\Hostname;
+use Laraflock\MultiTenant\Models\Website;
+use Laraflock\MultiTenant\Validators\HostnameValidator;
 
 class HostnameController extends BaseDashboardController
 {
@@ -32,25 +32,29 @@ class HostnameController extends BaseDashboardController
         return (new HostnameValidator())->catchFormRequest($hostname, redirect()->route('management-interface.website.read', $hostname->website->present()->urlArguments));
     }
 
-
     /**
      * @param Website $website
      * @param $name
+     *
      * @return array|\Illuminate\View\View|mixed
      */
-    public function add(Website $website, $name) {
+    public function add(Website $website, $name)
+    {
         return view('management-interface::hostname.create', compact('website'));
     }
 
     /**
      * @param HostnameRepositoryContract $hostname
-     * @param Website $website
+     * @param Website                    $website
      * @param $name
-     * @return $this|bool|\HynMe\Framework\Models\AbstractModel|null
+     *
      * @throws \Laracasts\Presenter\Exceptions\PresenterException
+     *
+     * @return $this|bool|\HynMe\Framework\Models\AbstractModel|null
      */
-    public function added(HostnameRepositoryContract $hostname, Website $website, $name) {
-        return (new HostnameValidator())->catchFormRequest($hostname->newInstance(), redirect()->route("management-interface.website.read", $website->present()->urlArguments));
+    public function added(HostnameRepositoryContract $hostname, Website $website, $name)
+    {
+        return (new HostnameValidator())->catchFormRequest($hostname->newInstance(), redirect()->route('management-interface.website.read', $website->present()->urlArguments));
     }
 
     public function ajax(HostnameRepositoryContract $hostname, ResponseFactory $response)
