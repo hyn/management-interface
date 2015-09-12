@@ -17,6 +17,7 @@ class DashboardModule implements ModuleInterface
     {
         return 'multi-tenancy';
     }
+
     /**
      * A user-friendly explanation of what your module exactly does.
      *
