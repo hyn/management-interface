@@ -23,7 +23,7 @@
                 @foreach($websites as $website)
                     <tr class="">
                         <td class="text-center col-xs-1">
-                            <a href="#">{{ $website->id }}</a>
+                            <a href="{{ route('management-interface.website.read', $website->present()->urlArguments) }}">{{ $website->id }}</a>
                         </td>
                         <td>{{ $website->present()->name }}</td>
                         <td>
