@@ -47,7 +47,7 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
         $this->registerTranslations();
         $this->registerConfigurations();
 
-        if (!$this->app->routesAreCached() && config('management-interface.routes')) {
+        if (! $this->app->routesAreCached() && config('management-interface.routes')) {
             $this->registerRoutes();
         }
 
