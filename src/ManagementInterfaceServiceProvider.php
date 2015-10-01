@@ -1,6 +1,6 @@
 <?php
 
-namespace HynMe\ManagementInterface;
+namespace Hyn\ManagementInterface;
 
 use Illuminate\Support\ServiceProvider;
 use Laraflock\Dashboard\Providers\DashboardServiceProvider;
@@ -114,12 +114,12 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
     {
         $this->app['router']->group([
             'prefix'    => 'dashboard/multi-tenant',
-            'namespace' => 'HynMe\ManagementInterface\Http\Controllers',
+            'namespace' => 'Hyn\ManagementInterface\Http\Controllers',
             'as'        => 'management-interface.',
         ], function () {
             /*
              * Dashboard specific routes
-             * @uses HynMe\ManagementInterface\Controllers\DashboardController
+             * @uses Hyn\ManagementInterface\Controllers\DashboardController
              */
             $this->app['router']->any('dashboard', [
                 'as'   => 'dashboard.index',
@@ -131,7 +131,7 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
             $this->app['router']->model('website', 'Laraflock\MultiTenant\Models\Website');
             /*
              * Website specific routes
-             * @uses HynMe\ManagementInterface\Controllers\WebsiteController
+             * @uses Hyn\ManagementInterface\Controllers\WebsiteController
              */
             $this->app['router']->any('websites', [
                 'as'   => 'website.index',
@@ -175,7 +175,7 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
             $this->app['router']->model('hostname', 'Laraflock\MultiTenant\Models\Hostname');
             /*
              * Hostname specific routes
-             * @uses HynMe\ManagementInterface\Controllers\HostnameController
+             * @uses Hyn\ManagementInterface\Controllers\HostnameController
              */
             $this->app['router']->get('website/{website}/{name}/add-hostname', [
                 'as'   => 'hostname.add',
@@ -207,7 +207,7 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
             $this->app['router']->model('tenant', 'Laraflock\MultiTenant\Models\Tenant');
             /*
              * Tenant specific routes
-             * @uses HynMe\ManagementInterface\Controllers\TenantController
+             * @uses Hyn\ManagementInterface\Controllers\TenantController
              */
             $this->app['router']->any('tenants', [
                 'as'   => 'tenant.index',
@@ -230,10 +230,10 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
              * Ssl model binding
              * @requires hyn-me/webserver
              */
-            $this->app['router']->model('ssl', 'HynMe\Webserver\Models\SslCertificate');
+            $this->app['router']->model('ssl', 'Hyn\Webserver\Models\SslCertificate');
             /*
              * Ssl specific routes
-             * @uses HynMe\ManagementInterface\Controllers\SslController
+             * @uses Hyn\ManagementInterface\Controllers\SslController
              * @requires hyn-me/webserver
              */
             $this->app['router']->any('ssl', [

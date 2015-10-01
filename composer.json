@@ -1,9 +1,8 @@
 {
-    "name": "hyn-me/management-interface",
+    "name": "hyn/management-interface",
     "description": "management interface for laraflock/multi-tenant",
     "keywords": [
-        "hyn-me",
-        "laraflock",
+        "hyn",
         "management-interface"
     ],
     "homepage": "https://github.com/hyn-me/management-interface",
@@ -20,7 +19,7 @@
         "docs": "http://hyn.me"
     },
     "require": {
-        "php" : ">=5.5.0",
+        "php" : ">=5.5.9",
         "laraflock/multi-tenant": "*",
         "laraflock/dashboard": "*"
     },
@@ -30,12 +29,12 @@
     },
     "autoload": {
         "psr-4": {
-            "HynMe\\ManagementInterface\\": "src"
+            "Hyn\\ManagementInterface\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "HynMe\\ManagementInterface\\Test\\": "tests"
+            "Hyn\\ManagementInterface\\Test\\": "tests"
         }
     },
     "scripts": {

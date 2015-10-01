@@ -1,6 +1,6 @@
 <?php
 
-namespace HynMe\ManagementInterface;
+namespace Hyn\ManagementInterface;
 
 use Laraflock\Dashboard\Repositories\Module\ModuleInterface;
 use Laraflock\MultiTenant\Models\Tenant;

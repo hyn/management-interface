@@ -1,6 +1,6 @@
 <?php
 
-namespace HynMe\ManagementInterface\Http\Controllers;
+namespace Hyn\ManagementInterface\Http\Controllers;
 
 use Illuminate\Routing\ResponseFactory;
 use Laraflock\Dashboard\Controllers\BaseDashboardController;
@@ -25,7 +25,7 @@ class HostnameController extends BaseDashboardController
      *
      * @param Hostname $hostname
      *
-     * @return $this|bool|\HynMe\Framework\Models\AbstractModel|null
+     * @return $this|bool|\Hyn\Framework\Models\AbstractModel|null
      */
     public function deleted(Hostname $hostname)
     {
@@ -50,7 +50,7 @@ class HostnameController extends BaseDashboardController
      *
      * @throws \Laracasts\Presenter\Exceptions\PresenterException
      *
-     * @return $this|bool|\HynMe\Framework\Models\AbstractModel|null
+     * @return $this|bool|\Hyn\Framework\Models\AbstractModel|null
      */
     public function added(HostnameRepositoryContract $hostname, Website $website, $name)
     {

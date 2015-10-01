@@ -1,6 +1,6 @@
 <?php
 
-namespace HynMe\ManagementInterface\Http\Controllers;
+namespace Hyn\ManagementInterface\Http\Controllers;
 
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Laraflock\Dashboard\Controllers\BaseDashboardController;
@@ -36,7 +36,7 @@ class TenantController extends BaseDashboardController
      *
      * @param TenantRepositoryContract $tenant
      *
-     * @return $this|bool|\HynMe\Framework\Models\AbstractModel|null
+     * @return $this|bool|\Hyn\Framework\Models\AbstractModel|null
      */
     public function store(TenantRepositoryContract $tenant)
     {
