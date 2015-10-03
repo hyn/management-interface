@@ -15,7 +15,7 @@
     ],
     "support": {
         "issues": "https://github.com/laraflock/multi-tenant/issues",
-        "source": "https://github.com/hyn-me/management-interface",
+        "source": "https://github.com/hyn/management-interface",
         "docs": "http://hyn.me"
     },
     "require": {
