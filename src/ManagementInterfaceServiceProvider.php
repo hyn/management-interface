@@ -113,7 +113,7 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
     protected function registerRoutes()
     {
         $this->app['router']->group([
-            'prefix'    => 'dashboard/multi-tenant',
+            'prefix'    => config('management-interface.route-prefix'),
             'namespace' => 'Hyn\ManagementInterface\Http\Controllers',
             'as'        => 'management-interface.',
         ], function () {
@@ -239,6 +239,14 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
             $this->app['router']->any('ssl', [
                 'as'   => 'ssl.index',
                 'uses' => 'SslController@index',
+            ]);
+            $this->app['router']->get('ssl/add', [
+                'as'   => 'ssl.add',
+                'uses' => 'SslController@add',
+            ]);
+            $this->app['router']->post('ssl/add', [
+                'as'   => 'ssl.store',
+                'uses' => 'SslController@store',
             ]);
             $this->app['router']->any('ssl/{ssl}', [
                 'as'   => 'ssl.read',

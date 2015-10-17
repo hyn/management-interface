@@ -2,6 +2,7 @@
 
 namespace Hyn\ManagementInterface;
 
+use Hyn\Webserver\Models\SslCertificate;
 use Laraflock\Dashboard\Repositories\Module\ModuleInterface;
 use Laraflock\MultiTenant\Models\Tenant;
 use Laraflock\MultiTenant\Models\Website;
@@ -74,6 +75,19 @@ class DashboardModule implements ModuleInterface
                     ],
                     trans('management-interface::tenant.create-tenant') => [
                         'href' => route('management-interface.tenant.create'),
+                    ],
+                ],
+            ],
+            // certificate menu links
+            trans_choice('management-interface::ssl.ssl', 2) => [
+                'href'  => null,
+                'icon'  => (new SslCertificate())->present()->icon,
+                'items' => [
+                    trans('management-interface::ssl.all-certificates') => [
+                        'href' => route('management-interface.ssl.index'),
+                    ],
+                    trans('management-interface::ssl.add-certificate') => [
+                        'href' => route('management-interface.ssl.add'),
                     ],
                 ],
             ],

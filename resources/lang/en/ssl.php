@@ -10,4 +10,7 @@ return [
 
     'is_expired' => 'expired',
 
+
+    'all-certificates'   => 'all certificates',
+    'add-certificate' => 'add certificate',
 ];
