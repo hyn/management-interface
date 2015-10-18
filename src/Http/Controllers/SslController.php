@@ -37,6 +37,6 @@ class SslController extends BaseDashboardController
      */
     public function store(SslRepositoryContract $ssl)
     {
-        return (new SslValidator())->catchFormRequest($ssl->newInstance(), redirect()->route('management-interface::ssl.index'));
+        return (new SslValidator())->catchFormRequest($ssl->newInstance(), redirect()->route('management-interface.ssl.index'));
     }
 }

@@ -28,7 +28,7 @@
                         <td>{{ $certificate->present()->name }}</td>
                         <td>
                             {{ $certificate->present()->hostnamesSummary }}
-                            <a href="{{ route('management-interface.hostname.add', $website->present()->urlArguments) }}" class="btn btn-xs btn-default pull-right" data-toggle="tooltip" data-placement="top" title="{{ trans('management-interface::action.add') }}">
+                            <a href="{{ route('management-interface.hostname.add', $certificate->present()->urlArguments) }}" class="btn btn-xs btn-default pull-right" data-toggle="tooltip" data-placement="top" title="{{ trans('management-interface::action.add') }}">
                                 @include('management-interface::icon.hostname')
                             </a>
                         </td>
