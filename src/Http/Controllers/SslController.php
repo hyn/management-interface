@@ -3,6 +3,7 @@
 namespace Hyn\ManagementInterface\Http\Controllers;
 
 use Hyn\Webserver\Contracts\SslRepositoryContract;
+use Hyn\Webserver\Models\SslCertificate;
 use Hyn\Webserver\Validators\SslValidator;
 use Laraflock\Dashboard\Controllers\BaseDashboardController;
 
@@ -38,5 +39,27 @@ class SslController extends BaseDashboardController
     public function store(SslRepositoryContract $ssl)
     {
         return (new SslValidator())->catchFormRequest($ssl->newInstance(), redirect()->route('management-interface.ssl.index'));
+    }
+
+    /**
+     * Shows SSL certificate edit page.
+     *
+     * @param SslCertificate $certificate
+     * @return array|\Illuminate\View\View|mixed
+     */
+    public function edit(SslCertificate $certificate)
+    {
+        return view('management-interface::ssl.edit', compact('certificate'));
+    }
+
+    /**
+     * Updates the SSL certificate after editing.
+     *
+     * @param SslCertificate $certificate
+     * @return $this|bool|\Hyn\Framework\Models\AbstractModel|null
+     */
+    public function update(SslCertificate $certificate)
+    {
+        return (new SslValidator())->catchFormRequest($certificate, redirect()->route('management-interface.ssl.index'));
     }
 }

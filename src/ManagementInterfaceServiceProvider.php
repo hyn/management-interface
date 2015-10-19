@@ -256,6 +256,10 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
                 'as'   => 'ssl.edit',
                 'uses' => 'SslController@edit',
             ]);
+            $this->app['router']->post('ssl/{ssl}/edit', [
+                'as'   => 'ssl.update',
+                'uses' => 'SslController@update',
+            ]);
             $this->app['router']->any('ssl/{ssl}/delete', [
                 'as'   => 'ssl.delete',
                 'uses' => 'SslController@delete',

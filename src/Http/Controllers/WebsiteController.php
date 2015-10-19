@@ -5,6 +5,7 @@ namespace Hyn\ManagementInterface\Http\Controllers;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Laraflock\Dashboard\Controllers\BaseDashboardController;
 use Laraflock\MultiTenant\Contracts\WebsiteRepositoryContract;
+use Laraflock\MultiTenant\Models\Website;
 use Laraflock\MultiTenant\Validators\WebsiteValidator;
 
 class WebsiteController extends BaseDashboardController
@@ -50,7 +51,7 @@ class WebsiteController extends BaseDashboardController
      *
      * @return array|\Illuminate\View\View
      */
-    public function edit($website)
+    public function edit(Website $website)
     {
         return view('management-interface::website.edit', compact('website'));
     }
@@ -58,11 +59,11 @@ class WebsiteController extends BaseDashboardController
     /**
      * Updates the website.
      *
-     * @param \Laraflock\MultiTenant\Models\Website $website
+     * @param Website $website
      *
      * @return $this|bool|\Hyn\Framework\Models\AbstractModel|null
      */
-    public function update($website)
+    public function update(Website $website)
     {
         return (new WebsiteValidator())->catchFormRequest($website, redirect()->route('management-interface.website.index'));
     }
@@ -70,11 +71,11 @@ class WebsiteController extends BaseDashboardController
     /**
      * Website view.
      *
-     * @param $website
+     * @param Website $website
      *
      * @return array|\Illuminate\View\View
      */
-    public function read($website)
+    public function read(Website $website)
     {
         return view('management-interface::website.view', compact('website'));
     }
