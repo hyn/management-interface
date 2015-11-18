@@ -4,9 +4,9 @@ namespace Hyn\ManagementInterface\Http\Controllers;
 
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Laraflock\Dashboard\Controllers\BaseDashboardController;
-use Laraflock\MultiTenant\Contracts\WebsiteRepositoryContract;
-use Laraflock\MultiTenant\Models\Website;
-use Laraflock\MultiTenant\Validators\WebsiteValidator;
+use Hyn\MultiTenant\Contracts\WebsiteRepositoryContract;
+use Hyn\MultiTenant\Models\Website;
+use Hyn\MultiTenant\Validators\WebsiteValidator;
 
 class WebsiteController extends BaseDashboardController
 {
@@ -47,7 +47,7 @@ class WebsiteController extends BaseDashboardController
     /**
      * Shows website edit page.
      *
-     * @param \Laraflock\MultiTenant\Models\Website $website
+     * @param Website $website
      *
      * @return array|\Illuminate\View\View
      */

@@ -4,8 +4,8 @@ namespace Hyn\ManagementInterface;
 
 use Hyn\Webserver\Models\SslCertificate;
 use Laraflock\Dashboard\Repositories\Module\ModuleInterface;
-use Laraflock\MultiTenant\Models\Tenant;
-use Laraflock\MultiTenant\Models\Website;
+use Hyn\MultiTenant\Models\Tenant;
+use Hyn\MultiTenant\Models\Website;
 
 class DashboardModule implements ModuleInterface
 {

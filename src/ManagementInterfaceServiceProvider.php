@@ -67,7 +67,7 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
         $this->loadViewsFrom($this->packagePath('resources/views'), 'management-interface');
         // allow views to be published to the storage directory
         $this->publishes([
-            $this->packagePath('resources/views') => base_path('resources/views/hyn-me/management-interface'),
+            $this->packagePath('resources/views') => base_path('resources/views/hyn/management-interface'),
         ], 'views');
     }
 
@@ -128,7 +128,7 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
             /*
              * Website model binding
              */
-            $this->app['router']->model('website', 'Laraflock\MultiTenant\Models\Website');
+            $this->app['router']->model('website', 'Hyn\MultiTenant\Models\Website');
             /*
              * Website specific routes
              * @uses Hyn\ManagementInterface\Controllers\WebsiteController
@@ -172,7 +172,7 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
             /*
              * Hostname model binding
              */
-            $this->app['router']->model('hostname', 'Laraflock\MultiTenant\Models\Hostname');
+            $this->app['router']->model('hostname', 'Hyn\MultiTenant\Models\Hostname');
             /*
              * Hostname specific routes
              * @uses Hyn\ManagementInterface\Controllers\HostnameController
@@ -204,7 +204,7 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
             /*
              * Tenant model binding
              */
-            $this->app['router']->model('tenant', 'Laraflock\MultiTenant\Models\Tenant');
+            $this->app['router']->model('tenant', 'Hyn\MultiTenant\Models\Tenant');
             /*
              * Tenant specific routes
              * @uses Hyn\ManagementInterface\Controllers\TenantController
