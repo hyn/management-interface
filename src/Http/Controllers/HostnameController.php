@@ -4,10 +4,10 @@ namespace Hyn\ManagementInterface\Http\Controllers;
 
 use Illuminate\Routing\ResponseFactory;
 use Laraflock\Dashboard\Controllers\BaseDashboardController;
-use Laraflock\MultiTenant\Contracts\HostnameRepositoryContract;
-use Laraflock\MultiTenant\Models\Hostname;
-use Laraflock\MultiTenant\Models\Website;
-use Laraflock\MultiTenant\Validators\HostnameValidator;
+use Hyn\MultiTenant\Contracts\HostnameRepositoryContract;
+use Hyn\MultiTenant\Models\Hostname;
+use Hyn\MultiTenant\Models\Website;
+use Hyn\MultiTenant\Validators\HostnameValidator;
 
 class HostnameController extends BaseDashboardController
 {

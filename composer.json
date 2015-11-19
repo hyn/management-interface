@@ -1,11 +1,10 @@
 {
     "name": "hyn/management-interface",
-    "description": "management interface for laraflock/multi-tenant",
+    "description": "management interface for hyn/multi-tenant",
     "keywords": [
         "hyn",
         "management-interface"
     ],
-    "homepage": "https://github.com/hyn-me/management-interface",
     "license": "MIT",
     "authors": [
         {
@@ -14,13 +13,13 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/laraflock/multi-tenant/issues",
+        "issues": "https://github.com/hyn/multi-tenant/issues",
         "source": "https://github.com/hyn/management-interface",
         "docs": "http://hyn.me"
     },
     "require": {
         "php" : ">=5.5.9",
-        "laraflock/multi-tenant": "*",
+        "hyn/multi-tenant": "*",
         "laraflock/dashboard": "*"
     },
     "require-dev": {
