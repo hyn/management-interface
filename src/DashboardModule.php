@@ -4,6 +4,7 @@ namespace Hyn\ManagementInterface;
 
 use Hyn\Webserver\Models\SslCertificate;
 use Laraflock\Dashboard\Repositories\Module\ModuleInterface;
+use Laraflock\MultiTenant\Models\Hostname;
 use Laraflock\MultiTenant\Models\Tenant;
 use Laraflock\MultiTenant\Models\Website;
 
@@ -52,6 +53,11 @@ class DashboardModule implements ModuleInterface
     public function getMenuItems()
     {
         return [
+            // hostname menu links
+            trans_choice('management-interface::hostname.hostname', 2) => [
+                'href'  => route('management-interface.hostname.index'),
+                'icon'  => (new Hostname())->present()->icon,
+            ],
             // website menu links
             trans_choice('management-interface::website.website', 2) => [
                 'href'  => null,

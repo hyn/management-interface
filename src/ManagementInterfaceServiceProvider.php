@@ -177,6 +177,10 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
              * Hostname specific routes
              * @uses Hyn\ManagementInterface\Controllers\HostnameController
              */
+            $this->app['router']->get('hostnames', [
+                'as' => 'hostname.index',
+                'uses' => 'HostnameController@index'
+            ]);
             $this->app['router']->get('website/{website}/{name}/add-hostname', [
                 'as'   => 'hostname.add',
                 'uses' => 'HostnameController@add',

@@ -62,4 +62,9 @@ class SslController extends BaseDashboardController
     {
         return (new SslValidator())->catchFormRequest($certificate, redirect()->route('management-interface.ssl.index'));
     }
+
+    public function read(SslCertificate $certificate)
+    {
+
+    }
 }
