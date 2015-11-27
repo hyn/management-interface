@@ -121,10 +121,10 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
              * Dashboard specific routes
              * @uses Hyn\ManagementInterface\Controllers\DashboardController
              */
-            $this->app['router']->any('dashboard', [
+            /*$this->app['router']->any('dashboard', [
                 'as'   => 'dashboard.index',
                 'uses' => 'DashboardController@index',
-            ]);
+            ]);*/
             /*
              * Website model binding
              */
