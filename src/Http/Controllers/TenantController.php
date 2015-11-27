@@ -6,6 +6,7 @@ use Illuminate\Contracts\Routing\ResponseFactory;
 use Laraflock\Dashboard\Controllers\BaseDashboardController;
 use Hyn\MultiTenant\Contracts\TenantRepositoryContract;
 use Hyn\MultiTenant\Validators\TenantValidator;
+use Hyn\MultiTenant\Models\Tenant;
 
 class TenantController extends BaseDashboardController
 {
@@ -19,6 +20,32 @@ class TenantController extends BaseDashboardController
     public function index(TenantRepositoryContract $tenant)
     {
         return view('management-interface::tenant.index')->with(['tenants' => $tenant->paginated()]);
+    }
+
+    /**
+     * Shows the delete tenant form.
+     *
+     * @param Tenant $tenant
+     * @return \Illuminate\View\View
+     */
+    public function delete(Tenant $tenant)
+    {
+        $deleteRoute = route('management-interface.tenant.deleted', $tenant->present()->urlArguments);
+
+        $name = $tenant->present()->name;
+
+        return view('management-interface::layouts.delete', compact('tenant', 'deleteRoute', 'name'));
+    }
+
+    /**
+     * Deletes the tenant after submit.
+     *
+     * @param Tenant $tenant
+     * @return $this|bool|\Hyn\Framework\Models\AbstractModel|null
+     */
+    public function deleted(Tenant $tenant)
+    {
+        return (new TenantValidator())->catchFormRequest($tenant, redirect()->route('management-interface.tenant.index'));
     }
 
     /**

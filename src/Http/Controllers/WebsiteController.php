@@ -23,6 +23,33 @@ class WebsiteController extends BaseDashboardController
     }
 
     /**
+     * Shows the delete website form.
+     *
+     * @param Website $website
+     * @return \Illuminate\View\View
+     */
+    public function delete(Website $website)
+    {
+        $deleteRoute = route('management-interface.website.deleted', $website->present()->urlArguments);
+
+        $name = $website->present()->name;
+
+        return view('management-interface::layouts.delete', compact('website', 'deleteRoute', 'name'));
+    }
+
+    /**
+     * Deletes the website after submit.
+     *
+     * @param Website $website
+     * @return $this|bool|\Hyn\Framework\Models\AbstractModel|null
+     *
+     */
+    public function deleted(Website $website)
+    {
+        return (new WebsiteValidator())->catchFormRequest($website, redirect()->route('management-interface.website.index'));
+    }
+
+    /**
      * Shows website create page.
      *
      * @return array|\Illuminate\View\View
