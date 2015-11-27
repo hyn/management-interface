@@ -149,9 +149,13 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
                 'as'   => 'website.store',
                 'uses' => 'WebsiteController@store',
             ]);
-            $this->app['router']->any('website/{website}/{name}/delete', [
+            $this->app['router']->get('website/{website}/{name}/delete', [
                 'as'   => 'website.delete',
                 'uses' => 'WebsiteController@delete',
+            ]);
+            $this->app['router']->delete('website/{website}/{name}/delete', [
+                'as'   => 'website.deleted',
+                'uses' => 'WebsiteController@deleted',
             ]);
             $this->app['router']->get('website/{website}/{name}/update', [
                 'as'   => 'website.edit',
@@ -224,6 +228,14 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
             $this->app['router']->post('tenant/create', [
                 'as'   => 'tenant.store',
                 'uses' => 'TenantController@store',
+            ]);
+            $this->app['router']->get('tenant/{hostname}/{name}/delete', [
+                'as'   => 'tenant.delete',
+                'uses' => 'TenantController@delete',
+            ]);
+            $this->app['router']->delete('tenant/{hostname}/{name}/delete', [
+                'as'   => 'tenant.deleted',
+                'uses' => 'TenantController@deleted',
             ]);
             $this->app['router']->post('ajax/tenants', [
                 'as'   => 'tenant.ajax',
