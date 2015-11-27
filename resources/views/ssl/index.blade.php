@@ -31,11 +31,8 @@
                         </td>
                         <td>{{ $certificate->tenant->present()->name }}</td>
                         <td class="text-center col-xs-1">
-{{--                            {!! BootForm::open()->delete()->action(route('management-interface::website.delete', ['id' => $website->id])) !!}--}}
-                            <a href="{{ route('management-interface.ssl.edit', $certificate->present()->urlArguments) }}" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil"></i></a>
                             <a href="{{ route('management-interface.ssl.read', $certificate->present()->urlArguments) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="View"><i class="fa fa-eye"></i></a>
-                            {{--                            {!! BootForm::submit('<i class="fa fa-trash"></i><span class="sr-only">Delete</span>')->addClass('btn btn-xs btn-danger')->removeClass('btn-default')->data('toggle', 'tooltip')->data('placement', 'top')->title('Delete') !!}--}}
-                            {{--{!! BootForm::close() !!}--}}
+                            <a href="{{ route('management-interface.ssl.edit', $certificate->present()->urlArguments) }}" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil"></i></a>
                         </td>
                     </tr>
                 @endforeach

@@ -25,10 +25,7 @@
                         </td>
                         <td>{{ $tenant->present()->name }}</td>
                         <td class="text-center col-xs-1">
-                            {{--{!! BootForm::open()->delete()->action(route('permissions.delete', ['id' => $permission->id])) !!}--}}
-                            {{--<a href="{{ route('permissions.edit', ['id' => $permission->id]) }}" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil"></i></a>--}}
-                            {{--{!! BootForm::submit('<i class="fa fa-trash"></i><span class="sr-only">Delete</span>')->addClass('btn btn-xs btn-danger')->removeClass('btn-default')->data('toggle', 'tooltip')->data('placement', 'top')->title('Delete') !!}--}}
-                            {{--{!! BootForm::close() !!}--}}
+                            <a href="{{ route('management-interface.tenant.delete', $tenant->present()->urlArguments) }}" class="btn btn-xs btn-danger" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                 @endforeach
