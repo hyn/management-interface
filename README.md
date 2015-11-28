@@ -13,7 +13,7 @@ A UI to manage [multi tenancy](https://github.com/hyn/multi-tenant).
 Via Composer
 
 ``` bash
-$ composer require hyn/management-interface
+composer require hyn/management-interface
 ```
 
 ## Usage
@@ -21,7 +21,7 @@ $ composer require hyn/management-interface
 Simply run the artisan command:
 
 ```bash
-$ php artisan dashboard:setup
+php artisan dashboard:setup
 ```
 
 Answer the questions for the first account and visit your website, `http://example.org/dashboard`.
