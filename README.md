@@ -6,7 +6,7 @@
 [![Total Downloads][ico-downloads]][link-downloads]
 
 
-A UI to manage [multi tenancy](https://github.com/laraflock/multi-tenant).
+A UI to manage [multi tenancy](https://github.com/hyn/multi-tenant).
 
 ## Install
 
@@ -18,26 +18,17 @@ $ composer require hyn/management-interface
 
 ## Usage
 
+Simply run the artisan command:
 
-
-## Change log
-
-Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
-
-## Testing
-
-``` bash
-$ composer test
+```bash
+$ php artisan dashboard:setup
 ```
+
+Answer the questions for the first account and visit your website, `http://example.org/dashboard`.
 
 ## Security
 
 If you discover any security related issues, please email :author_email instead of using the issue tracker.
-
-## Credits
-
-- [Daniël "luceos" Klabbers][link-author]
-- [All Contributors][link-contributors]
 
 ## License
 
@@ -46,8 +37,6 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-version]: https://img.shields.io/packagist/v/hyn/management-interface.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
 [ico-travis]: https://img.shields.io/travis/hyn/management-interface/master.svg?style=flat-square
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/hyn/management-interface.svg?style=flat-square
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/hyn/management-interface.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/hyn/management-interface.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/hyn/management-interface
