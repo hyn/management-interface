@@ -15,7 +15,7 @@
     "support": {
         "issues": "https://github.com/hyn/multi-tenant/issues",
         "source": "https://github.com/hyn/management-interface",
-        "docs": "http://hyn.me"
+        "docs": "https://hyn.readme.io"
     },
     "require": {
         "php" : ">=5.5.9",
