@@ -11,7 +11,6 @@ use Hyn\MultiTenant\Validators\HostnameValidator;
 
 class HostnameController extends BaseDashboardController
 {
-
     /**
      * @param HostnameRepositoryContract $hostname
      * @return \Illuminate\View\View
