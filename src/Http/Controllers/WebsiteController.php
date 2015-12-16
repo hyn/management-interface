@@ -42,7 +42,6 @@ class WebsiteController extends BaseDashboardController
      *
      * @param Website $website
      * @return $this|bool|\Hyn\Framework\Models\AbstractModel|null
-     *
      */
     public function deleted(Website $website)
     {

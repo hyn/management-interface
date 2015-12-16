@@ -183,7 +183,7 @@ class ManagementInterfaceServiceProvider extends ServiceProvider
              */
             $this->app['router']->get('hostnames', [
                 'as' => 'hostname.index',
-                'uses' => 'HostnameController@index'
+                'uses' => 'HostnameController@index',
             ]);
             $this->app['router']->get('website/{website}/{name}/add-hostname', [
                 'as'   => 'hostname.add',

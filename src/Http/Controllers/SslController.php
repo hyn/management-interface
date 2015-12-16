@@ -65,6 +65,5 @@ class SslController extends BaseDashboardController
 
     public function read(SslCertificate $certificate)
     {
-
     }
 }
