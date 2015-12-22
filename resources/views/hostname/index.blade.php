@@ -27,9 +27,13 @@
                         </td>
                         <td>{{ $hostname->present()->name }}</td>
                         <td>
+                            @if($hostname->website)
                             <a href="{{ route('management-interface.website.read', $hostname->website->present()->urlArguments) }}">
                                 {{ $hostname->website->present()->name }}
                             </a>
+                            @else
+                            -
+                            @endif
                         </td>
                         <td>{{ $hostname->tenant->present()->name }}</td>
                         <td class="text-center col-xs-1">
