@@ -37,7 +37,9 @@
                         </td>
                         <td>{{ $hostname->tenant->present()->name }}</td>
                         <td class="text-center col-xs-1">
+                            @if($hostname->website)
                             <a href="{{ route('management-interface.website.read', $hostname->website->present()->urlArguments) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="View"><i class="fa fa-eye"></i></a>
+                            @endif
                             <a href="{{ route('management-interface.hostname.delete', $hostname->present()->urlArguments) }}" class="btn btn-xs btn-danger" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
