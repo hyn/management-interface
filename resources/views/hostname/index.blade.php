@@ -23,7 +23,13 @@
                 @foreach($hostnames as $hostname)
                     <tr class="">
                         <td class="text-center col-xs-1">
-                            <a href="{{ route('management-interface.website.read', $hostname->website->present()->urlArguments) }}">{{ $hostname->id }}</a>
+                            @if($hostname->website)
+                            <a href="{{ route('management-interface.website.read', $hostname->website->present()->urlArguments) }}">
+                            @endif
+                                {{ $hostname->id }}
+                            @if($hostname->website)
+                                </a>
+                            @endif
                         </td>
                         <td>{{ $hostname->present()->name }}</td>
                         <td>
