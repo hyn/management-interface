@@ -2,12 +2,12 @@
 
 namespace Hyn\ManagementInterface\Http\Controllers;
 
-use Illuminate\Routing\ResponseFactory;
-use Laraflock\Dashboard\Controllers\BaseDashboardController;
 use Hyn\MultiTenant\Contracts\HostnameRepositoryContract;
 use Hyn\MultiTenant\Models\Hostname;
 use Hyn\MultiTenant\Models\Website;
 use Hyn\MultiTenant\Validators\HostnameValidator;
+use Illuminate\Routing\ResponseFactory;
+use Laraflock\Dashboard\Controllers\BaseDashboardController;
 
 class HostnameController extends BaseDashboardController
 {
@@ -45,7 +45,8 @@ class HostnameController extends BaseDashboardController
      */
     public function deleted(Hostname $hostname)
     {
-        return (new HostnameValidator())->catchFormRequest($hostname, redirect()->route('management-interface.website.read', $hostname->website->present()->urlArguments));
+        return (new HostnameValidator())->catchFormRequest($hostname,
+            redirect()->route('management-interface.website.index'));
     }
 
     /**
